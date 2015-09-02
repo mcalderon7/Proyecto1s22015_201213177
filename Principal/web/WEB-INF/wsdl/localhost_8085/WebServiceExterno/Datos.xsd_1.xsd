@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2-hudson-740-. --><xs:schema xmlns:tns="http://datos.webserviceexterno.edd/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://datos.webserviceexterno.edd/">
+
+<xs:element name="CrearAdministrador" type="tns:CrearAdministrador" />
+
+<xs:element name="CrearAdministradorResponse" type="tns:CrearAdministradorResponse" />
+
+<xs:element name="CrearBus" type="tns:CrearBus" />
+
+<xs:element name="CrearBusResponse" type="tns:CrearBusResponse" />
+
+<xs:element name="CrearChofer" type="tns:CrearChofer" />
+
+<xs:element name="CrearChoferResponse" type="tns:CrearChoferResponse" />
+
+<xs:element name="CrearEstacionClave" type="tns:CrearEstacionClave" />
+
+<xs:element name="CrearEstacionClaveResponse" type="tns:CrearEstacionClaveResponse" />
+
+<xs:element name="CrearEstacionGeneral" type="tns:CrearEstacionGeneral" />
+
+<xs:element name="CrearEstacionGeneralResponse" type="tns:CrearEstacionGeneralResponse" />
+
+<xs:element name="CrearRuta" type="tns:CrearRuta" />
+
+<xs:element name="CrearRutaResponse" type="tns:CrearRutaResponse" />
+
+<xs:complexType name="CrearEstacionClave">
+<xs:sequence>
+<xs:element name="id_estacion_clave" type="xs:int" />
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearEstacionClaveResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearAdministrador">
+<xs:sequence>
+<xs:element name="correo" type="xs:string" minOccurs="0" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearAdministradorResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearChofer">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="apellido" type="xs:string" minOccurs="0" />
+<xs:element name="clave" type="xs:int" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearChoferResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearBus">
+<xs:sequence>
+<xs:element name="id_bus" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearBusResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearRuta">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="estaciones" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearRutaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearEstacionGeneral">
+<xs:sequence>
+<xs:element name="id_estacion_general" type="xs:int" />
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearEstacionGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

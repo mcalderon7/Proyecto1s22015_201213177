@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8085/WebServiceExterno/Datos?WSDL" uri="src/conf/xml-resources/web-service-references/Datos/wsdl/localhost_8085/WebServiceExterno/Datos.wsdl"/>
+    <system systemId="http://localhost:8085/WebServiceExterno/Datos?xsd=1" uri="src/conf/xml-resources/web-service-references/Datos/wsdl/localhost_8085/WebServiceExterno/Datos.xsd_1.xsd"/>
+</catalog>
