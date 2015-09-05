@@ -16,7 +16,9 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "Datos")
 public class Datos {
-
+    
+    ArbolAVL_Admin test = new ArbolAVL_Admin();
+    
     /**
      * Web service operation
      * @param correo
@@ -26,13 +28,16 @@ public class Datos {
     @WebMethod(operationName = "CrearAdministrador")
     public String CrearAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
-        
+        int numNodos = 0;
         int valor = (correo.hashCode() > 0) ? correo.hashCode() : correo.hashCode() * -1;
         String salida = "Podriamos decir que usted esta creando el administrador con correo "+ correo +" y con la contraseña: " + password;
         
-        ArbolAVL_Admin test = new ArbolAVL_Admin();
         Numero elemento = new Numero(valor);
         test.insertar(elemento);
+        numNodos = ArbolAVL_Admin.imprimir(test.raizArbol());
+        System.out.println("****************************************************************************************************");
+        System.out.println("\n Número de nodos: " + numNodos);
+        System.out.println("****************************************************************************************************");
         
         return salida;
     }

@@ -177,4 +177,30 @@ public class ArbolAVL_Admin {
         raiz = insertarAVL(raiz, dato, h);
     }
     
+    static int altura(NodoAVL_Admin r) {
+        if(r != null) {
+            return mayor(altura((NodoAVL_Admin)r.subArbolIzquierdo()), altura((NodoAVL_Admin)r.subArbolDerecho())) + 1;
+        }else {
+            return 0;
+        }
+    }
+    
+    static int mayor(int x, int y) {
+        return (x > y ? x : y);
+    }
+    
+    static int imprimir(NodoAVL_Admin r) {
+        if(r != null) {
+            int cuantosIzquierda, cuantosDerecha;
+            
+            cuantosIzquierda = imprimir((NodoAVL_Admin)r.subArbolIzquierdo());
+            System.out.print(r + "\n");
+            cuantosDerecha = imprimir((NodoAVL_Admin)r.subArbolDerecho());
+            
+            return cuantosIzquierda + cuantosDerecha + 1;
+        }else {
+            return 0;
+        }
+    }
+    
 }
