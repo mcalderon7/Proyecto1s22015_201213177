@@ -1,5 +1,7 @@
 package edd.webserviceexterno.datos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Marvin
@@ -104,9 +106,75 @@ public class ArbolAVL_Admin {
         return n2;
     }
     
+    private NodoAVL_Admin insertarAVL(NodoAVL_Admin raiz, Comparador dt, Logical h) {
+        NodoAVL_Admin n1;
+        
+        if(raiz == null) {
+            raiz = new NodoAVL_Admin(dt);
+            h.setLogical(true);
+        }else if(dt.menorQue(raiz.valorNodo())) {
+            NodoAVL_Admin izq;
+            izq = insertarAVL((NodoAVL_Admin) raiz.subArbolIzquierdo(), dt, h);
+            raiz.ramaIzquierda(izq);
+            
+            /*Regreso por los nodos del camino de busqueda*/
+            if(h.booleanValue()) {
+                switch (raiz.fe) {
+                    case 1:
+                        raiz.fe = 0;
+                        h.setLogical(false);
+                        break;
+                    case 0:
+                        raiz.fe = -1;
+                        break;
+                    case -1:
+                        n1 = (NodoAVL_Admin) raiz.subArbolIzquierdo();
+                        if(n1.fe == -1) {
+                            raiz = rotacionII(raiz, n1);
+                        }else {
+                            raiz = rotacionID(raiz, n1);
+                        }
+                        h.setLogical(false);
+                }
+            }
+        }else if(dt.mayorQue(raiz.valorNodo())) {
+            NodoAVL_Admin dr;
+            dr = insertarAVL((NodoAVL_Admin) raiz.subArbolDerecho(), dt, h);
+            raiz.ramaDerecha(dr);
+            
+            /*Regreso por los nodos del camino de busqueda*/
+            if(h.booleanValue()) {
+                switch(raiz.fe) {
+                    case 1:
+                        n1 = (NodoAVL_Admin) raiz.subArbolDerecho();
+                        if(n1.fe == +1) {
+                            raiz = rotacionDD(raiz, n1);
+                        }else {
+                            raiz = rotacionDI(raiz, n1);
+                        }
+                        h.setLogical(false);
+                        break;
+                    case 0:
+                        raiz.fe = +1;
+                        break;
+                    case -1:
+                        raiz.fe = 0;
+                        h.setLogical(false);
+                }
+            }
+            
+        }else {
+            JOptionPane.showMessageDialog(null, "Clave repetida");
+        }
+        
+        return raiz;
+    }
+    
     public void insertar (Object valor) {
         Comparador dato;
         Logical h = new Logical(false);
+        dato = (Comparador) valor;
+        raiz = insertarAVL(raiz, dato, h);
     }
     
 }
