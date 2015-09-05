@@ -28,10 +28,6 @@
             String correo_x = request.getParameter("correo");
             String contraseña = request.getParameter("contrasena");
 
-            System.out.println("Los valores son (flag): " + flag);
-            System.out.println("Los valores son (correo_x): " + correo_x);
-            System.out.println("Los valores son (contraseña): " + contraseña);
-
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
              // TODO initialize WS operation arguments here
