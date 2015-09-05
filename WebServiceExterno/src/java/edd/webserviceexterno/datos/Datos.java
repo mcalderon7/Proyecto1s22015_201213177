@@ -27,6 +27,9 @@ public class Datos {
     public String CrearAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         
+        int valor = (correo.hashCode() > 0) ? correo.hashCode() : correo.hashCode() * -1;
+        System.out.println(valor);
+        
         String salida = "Podriamos decir que usted esta creando el administrador con correo "+ correo +" y con la contraseña: " + password;
         
         return salida;

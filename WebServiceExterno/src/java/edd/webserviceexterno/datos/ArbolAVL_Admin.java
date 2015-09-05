@@ -170,7 +170,7 @@ public class ArbolAVL_Admin {
         return raiz;
     }
     
-    public void insertar (Object valor) {
+    public void insertar(Object valor) {
         Comparador dato;
         Logical h = new Logical(false);
         dato = (Comparador) valor;
