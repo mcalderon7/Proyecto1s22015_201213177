@@ -104,4 +104,9 @@ public class ArbolAVL_Admin {
         return n2;
     }
     
+    public void insertar (Object valor) {
+        Comparador dato;
+        Logical h = new Logical(false);
+    }
+    
 }
