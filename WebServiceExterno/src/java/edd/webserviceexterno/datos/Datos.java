@@ -7,6 +7,8 @@
 package edd.webserviceexterno.datos;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -28,7 +30,7 @@ public class Datos {
      * @return 
      */
     @WebMethod(operationName = "CrearAdministrador")
-    public String CrearAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) throws IOException {
+    public String CrearAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         int numNodos = 0;
         int valor = (correo.hashCode() > 0) ? correo.hashCode() : correo.hashCode() * -1;
@@ -40,8 +42,12 @@ public class Datos {
         flag++;
         
         if(flag == 4) {
-            String contenido = ArbolAVL_Admin.graficar(test.raizArbol());
-            ArbolAVL_Admin.crearArchivoGraphviz(contenido);
+            try {
+                String contenido = ArbolAVL_Admin.graficar(test.raizArbol());
+                ArbolAVL_Admin.crearArchivoGraphviz(contenido);
+            } catch (IOException ex) {
+                Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         return salida;
