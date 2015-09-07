@@ -1,6 +1,9 @@
 package edd.webserviceexterno.datos;
 
-import javax.swing.JOptionPane;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -8,10 +11,15 @@ import javax.swing.JOptionPane;
  */
 public class ArbolAVL_Admin {
     
+    static String codigoGraph = "";
+    static int idNodo = 0;
     NodoAVL_Admin raiz;
     
     public ArbolAVL_Admin() {
         raiz = null;
+        codigoGraph += "digraph grafica{\n";
+        codigoGraph += "rankdir=TB;\n";
+        codigoGraph += "node [shape = record, style=filled, fillcolor=seashell2];\n";
     }
     
     public NodoAVL_Admin raizArbol() {
@@ -106,15 +114,16 @@ public class ArbolAVL_Admin {
         return n2;
     }
     
-    private NodoAVL_Admin insertarAVL(NodoAVL_Admin raiz, Comparador dt, Logical h) {
+    private NodoAVL_Admin insertarAVL(NodoAVL_Admin raiz, Comparador dt, Logical h, int x) {
         NodoAVL_Admin n1;
         
         if(raiz == null) {
             raiz = new NodoAVL_Admin(dt);
+            raiz.valorNodoEnString(x);
             h.setLogical(true);
         }else if(dt.menorQue(raiz.valorNodo())) {
             NodoAVL_Admin izq;
-            izq = insertarAVL((NodoAVL_Admin) raiz.subArbolIzquierdo(), dt, h);
+            izq = insertarAVL((NodoAVL_Admin) raiz.subArbolIzquierdo(), dt, h, x);
             raiz.ramaIzquierda(izq);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -139,7 +148,7 @@ public class ArbolAVL_Admin {
             }
         }else if(dt.mayorQue(raiz.valorNodo())) {
             NodoAVL_Admin dr;
-            dr = insertarAVL((NodoAVL_Admin) raiz.subArbolDerecho(), dt, h);
+            dr = insertarAVL((NodoAVL_Admin) raiz.subArbolDerecho(), dt, h, x);
             raiz.ramaDerecha(dr);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -170,11 +179,11 @@ public class ArbolAVL_Admin {
         return raiz;
     }
     
-    public void insertar(Object valor) {
+    public void insertar(Object valor, int x) {
         Comparador dato;
         Logical h = new Logical(false);
         dato = (Comparador) valor;
-        raiz = insertarAVL(raiz, dato, h);
+        raiz = insertarAVL(raiz, dato, h, x);
     }
     
     static int altura(NodoAVL_Admin r) {
@@ -192,15 +201,43 @@ public class ArbolAVL_Admin {
     static int imprimir(NodoAVL_Admin r) {
         if(r != null) {
             int cuantosIzquierda, cuantosDerecha;
-            
             cuantosIzquierda = imprimir((NodoAVL_Admin)r.subArbolIzquierdo());
-            System.out.print(r + "\n");
+            System.out.print(r.valorNodoEnString() + "\n");
             cuantosDerecha = imprimir((NodoAVL_Admin)r.subArbolDerecho());
-            
+            System.out.println("**************************************************************");
+            System.out.println("Cuantos a la derecha ->" + cuantosDerecha);
+            System.out.println("Cuantos a la izquierda ->" + cuantosIzquierda);
+            System.out.println("**************************************************************");
             return cuantosIzquierda + cuantosDerecha + 1;
         }else {
             return 0;
         }
+    }
+    
+    static String graficar(NodoAVL_Admin r) {
+        
+        NodoAVL_Admin aux = r;
+        
+        if(r != null) {
+            codigoGraph += "nodo" + idNodo + " [ label ="+ graficar((NodoAVL_Admin)aux.subArbolIzquierdo()) +"];\n";
+            codigoGraph += "nodo" + idNodo + " [ label ="+ graficar((NodoAVL_Admin)aux.subArbolDerecho()) +"];\n";
+        }
+        
+        return aux.valorNodoEnString();
+        
+    }
+    
+    static void crearArchivoGraphviz(String contenido) throws IOException {
+        
+        /*Termino de escribir el contenido del archivo de graphviz*/
+        codigoGraph += "\n}";
+        
+        File file = new File("diagrama.txt");
+        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        try (BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(contenido);
+        }
+        System.out.println("Done writting Graphviz file.");
     }
     
 }

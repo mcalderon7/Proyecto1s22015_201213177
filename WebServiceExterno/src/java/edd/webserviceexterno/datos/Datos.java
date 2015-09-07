@@ -6,6 +6,7 @@
 
 package edd.webserviceexterno.datos;
 
+import java.io.IOException;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -18,6 +19,7 @@ import javax.jws.WebParam;
 public class Datos {
     
     ArbolAVL_Admin test = new ArbolAVL_Admin();
+    int flag = 0;
     
     /**
      * Web service operation
@@ -26,18 +28,21 @@ public class Datos {
      * @return 
      */
     @WebMethod(operationName = "CrearAdministrador")
-    public String CrearAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) {
+    public String CrearAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) throws IOException {
         //TODO write your implementation code here:
         int numNodos = 0;
         int valor = (correo.hashCode() > 0) ? correo.hashCode() : correo.hashCode() * -1;
         String salida = "Podriamos decir que usted esta creando el administrador con correo "+ correo +" y con la contraseña: " + password;
         
         Numero elemento = new Numero(valor);
-        test.insertar(elemento);
+        test.insertar(elemento, valor);
         numNodos = ArbolAVL_Admin.imprimir(test.raizArbol());
-        System.out.println("****************************************************************************************************");
-        System.out.println("\n Número de nodos: " + numNodos);
-        System.out.println("****************************************************************************************************");
+        flag++;
+        
+        if(flag == 4) {
+            String contenido = ArbolAVL_Admin.graficar(test.raizArbol());
+            ArbolAVL_Admin.crearArchivoGraphviz(contenido);
+        }
         
         return salida;
     }

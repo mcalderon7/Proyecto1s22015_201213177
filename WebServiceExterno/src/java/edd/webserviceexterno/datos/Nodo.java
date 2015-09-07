@@ -6,6 +6,7 @@ package edd.webserviceexterno.datos;
  */
 public class Nodo {
     
+    protected String valorString;
     protected Object dato;
     protected Nodo izquierdo;
     protected Nodo derecho;
@@ -19,6 +20,14 @@ public class Nodo {
         dato = valor;
         izquierdo = ramaI;
         derecho = ramaD;
+    }
+    
+    public void valorNodoEnString(int x) {
+        valorString = String.valueOf(x);
+    }
+    
+    public String valorNodoEnString() {
+        return valorString;
     }
     
     public Object valorNodo() {
