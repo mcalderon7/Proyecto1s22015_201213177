@@ -44,6 +44,9 @@ public class Datos {
         if(flag == 4) {
             try {
                 String contenido = ArbolAVL_Admin.graficar(test.raizArbol());
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+                System.out.println(contenido);
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
                 ArbolAVL_Admin.crearArchivoGraphviz(contenido);
             } catch (IOException ex) {
                 Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);

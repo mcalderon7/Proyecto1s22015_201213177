@@ -205,8 +205,8 @@ public class ArbolAVL_Admin {
             System.out.print(r.valorNodoEnString() + "\n");
             cuantosDerecha = imprimir((NodoAVL_Admin)r.subArbolDerecho());
             System.out.println("**************************************************************");
-            System.out.println("Cuantos a la derecha ->" + cuantosDerecha);
             System.out.println("Cuantos a la izquierda ->" + cuantosIzquierda);
+            System.out.println("Cuantos a la derecha ->" + cuantosDerecha);
             System.out.println("**************************************************************");
             return cuantosIzquierda + cuantosDerecha + 1;
         }else {
@@ -216,23 +216,29 @@ public class ArbolAVL_Admin {
     
     static String graficar(NodoAVL_Admin r) {
         
-        NodoAVL_Admin aux = r;
-        
         if(r != null) {
-            codigoGraph += "nodo" + idNodo + " [ label ="+ graficar((NodoAVL_Admin)aux.subArbolIzquierdo()) +"];\n";
-            codigoGraph += "nodo" + idNodo + " [ label ="+ graficar((NodoAVL_Admin)aux.subArbolDerecho()) +"];\n";
+            codigoGraph += "nodo" + idNodo + " [ label = "+ r.valorNodoEnString() +" ];\n";
+            idNodo++;
+            if((NodoAVL_Admin)r.subArbolIzquierdo() != null) {
+                graficar((NodoAVL_Admin)r.subArbolIzquierdo());
+                idNodo++;
+            }
+            if((NodoAVL_Admin)r.subArbolDerecho() != null) {
+                graficar((NodoAVL_Admin)r.subArbolDerecho());
+                idNodo++;
+            }
+            return codigoGraph;
+        }else {
+            return codigoGraph;
         }
-        
-        return aux.valorNodoEnString();
-        
     }
     
     static void crearArchivoGraphviz(String contenido) throws IOException {
         
         /*Termino de escribir el contenido del archivo de graphviz*/
-        codigoGraph += "\n}";
+        contenido += "}";
         
-        File file = new File("diagrama.txt");
+        File file = new File("C:\\Users\\Marvin\\Documents\\NetBeansProjects\\Proyecto1s22015_201213177\\diagrama.txt");
         FileWriter fw = new FileWriter(file.getAbsoluteFile());
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(contenido);
