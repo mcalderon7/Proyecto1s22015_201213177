@@ -51,21 +51,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="CrearChofer">
-<xs:sequence>
-<xs:element name="nombre" type="xs:string" minOccurs="0" />
-<xs:element name="apellido" type="xs:string" minOccurs="0" />
-<xs:element name="clave" type="xs:int" />
-<xs:element name="password" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="CrearChoferResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="CrearBus">
 <xs:sequence>
 <xs:element name="id_bus" type="xs:int" />
@@ -73,6 +58,20 @@
 </xs:complexType>
 
 <xs:complexType name="CrearBusResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearEstacionGeneral">
+<xs:sequence>
+<xs:element name="id_estacion_general" type="xs:int" />
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearEstacionGeneralResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0" />
 </xs:sequence>
@@ -91,15 +90,16 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="CrearEstacionGeneral">
+<xs:complexType name="CrearChofer">
 <xs:sequence>
-<xs:element name="id_estacion_general" type="xs:int" />
 <xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="apellido" type="xs:string" minOccurs="0" />
+<xs:element name="clave" type="xs:int" />
 <xs:element name="password" type="xs:string" minOccurs="0" />
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="CrearEstacionGeneralResponse">
+<xs:complexType name="CrearChoferResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0" />
 </xs:sequence>

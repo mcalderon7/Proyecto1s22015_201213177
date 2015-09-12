@@ -28,8 +28,8 @@
     </target>
     <target name="wsimport-client-Datos" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/Datos"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Datos" destdir="${build.generated.dir}/jax-wsCache/Datos" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Datos/wsdl/localhost_8085/WebServiceExterno/Datos.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8085/WebServiceExterno/Datos?WSDL" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Datos/wsdl/localhost_8085/WebServiceExterno/Datos.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/Datos" destdir="${build.generated.dir}/jax-wsCache/Datos" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/Datos/wsdl/192.168.0.1_8085/WebServiceExterno/Datos.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://192.168.0.1:8085/WebServiceExterno/Datos?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/Datos/wsdl/192.168.0.1_8085/WebServiceExterno/Datos.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/Datos"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
