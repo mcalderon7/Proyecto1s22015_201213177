@@ -22,14 +22,21 @@
     <%-- start web service invocation --%><hr/>
     <%
     try {
-	edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
-	edd.webserviceexterno.datos.Datos port = service.getDatosPort();
-	 // TODO initialize WS operation arguments here
-	java.lang.String correo = "";
-	java.lang.String password = "";
-	// TODO process result here
-	java.lang.String result = port.crearAdministrador(correo, password);
-	out.println("Result = "+result);
+	String flag = request.getParameter("action");
+        
+        if("Enviar".equals(flag)) {
+            String correo_x = request.getParameter("correo");
+            String contraseña = request.getParameter("contrasena");
+
+            edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
+            edd.webserviceexterno.datos.Datos port = service.getDatosPort();
+             // TODO initialize WS operation arguments here
+            java.lang.String correo = correo_x;
+            java.lang.String password = contraseña;
+            // TODO process result here
+            java.lang.String result = port.crearAdministrador(correo, password);
+            out.println("Result = "+result);
+        }
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }
