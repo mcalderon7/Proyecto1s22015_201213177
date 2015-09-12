@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Stack;
 
 /**
  *
@@ -11,15 +12,18 @@ import java.io.IOException;
  */
 public class ArbolAVL_Admin {
     
+    /*Bandera que me indica si ya paso por la recursividad en izquierda o derecha al realizar el archivo Graphviz*/
+    static Boolean flag = false;
     static String codigoGraph = "";
+    static String enlaceGraph = "";
     static int idNodo = 0;
     NodoAVL_Admin raiz;
     
     public ArbolAVL_Admin() {
         raiz = null;
-        codigoGraph += "digraph grafica{\n";
-        codigoGraph += "rankdir=TB;\n";
-        codigoGraph += "node [shape = record, style=filled, fillcolor=seashell2];\n";
+        codigoGraph += "digraph grafica{" + System.getProperty("line.separator");
+        codigoGraph += "rankdir=TB;" + System.getProperty("line.separator");
+        codigoGraph += "node [shape = record, style=filled, fillcolor=seashell2];" + System.getProperty("line.separator");
     }
     
     public NodoAVL_Admin raizArbol() {
@@ -217,19 +221,25 @@ public class ArbolAVL_Admin {
     static String graficar(NodoAVL_Admin r) {
         
         if(r != null) {
-            codigoGraph += "nodo" + idNodo + " [ label = "+ r.valorNodoEnString() +" ];\n";
+            codigoGraph += "nodo" + idNodo + " [ label = "+ r.valorNodoEnString() +" ];" + System.getProperty("line.separator");
             idNodo++;
+            
+            if(flag = true) {
+                enlaceGraph += "nodo" + idNodo + System.getProperty("line.separator");
+            }
+            
             if((NodoAVL_Admin)r.subArbolIzquierdo() != null) {
                 graficar((NodoAVL_Admin)r.subArbolIzquierdo());
-                idNodo++;
+                enlaceGraph += "nodo" + idNodo + "-> ";
+                flag = true;
             }
             if((NodoAVL_Admin)r.subArbolDerecho() != null) {
                 graficar((NodoAVL_Admin)r.subArbolDerecho());
-                idNodo++;
+                enlaceGraph += "nodo" + idNodo + "-> ";
             }
-            return codigoGraph;
+            return codigoGraph + enlaceGraph;
         }else {
-            return codigoGraph;
+            return codigoGraph + enlaceGraph;
         }
     }
     
@@ -238,7 +248,7 @@ public class ArbolAVL_Admin {
         /*Termino de escribir el contenido del archivo de graphviz*/
         contenido += "}";
         
-        File file = new File("C:\\Users\\Marvin\\Documents\\NetBeansProjects\\Proyecto1s22015_201213177\\diagrama.txt");
+        File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama.txt");
         FileWriter fw = new FileWriter(file.getAbsoluteFile());
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(contenido);
