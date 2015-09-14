@@ -86,6 +86,27 @@ public class Lista_Buses {
         
     }
     
+    public void ordenamientoBurbuja(Lista_Buses lista) {
+        
+        if(lista.getCantidadNodos() > 1) {
+            
+            Nodo_Lista aux1 = cabeza;
+            Nodo_Lista aux2 = cabeza.siguiente;
+            
+            while(aux2 != null) {
+                if(aux2.clave < aux1.clave) {
+                    int aux = aux1.clave;
+                    aux1.clave = aux2.clave;
+                    aux2.clave = aux;
+                }
+                aux2 = aux2.siguiente;
+                aux1 = aux1.siguiente;
+            }
+            
+        }
+        
+    }
+    
     public String graficar() {
         Nodo_Lista aux = cabeza;
         
