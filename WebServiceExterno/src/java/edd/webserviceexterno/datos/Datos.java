@@ -41,7 +41,7 @@ public class Datos {
         numNodos = ArbolAVL_Admin.imprimir(test.raizArbol());
         flag++;
         
-        if(flag == 4) {
+        if(flag == 6) {
             try {
                 String contenido = ArbolAVL_Admin.graficar(test.raizArbol());
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");

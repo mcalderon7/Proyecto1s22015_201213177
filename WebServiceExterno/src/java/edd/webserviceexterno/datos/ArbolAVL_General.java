@@ -12,16 +12,16 @@ import java.util.Stack;
  *
  * @author Marvin
  */
-public class ArbolAVL_Admin {
+public class ArbolAVL_General {
     
     static Boolean flag = false;
     static Stack<String> pila;
     static String codigoGraph = "";
     static String enlaceGraph = "";
     static int idNodo = 0;
-    NodoAVL_Admin raiz;
+    NodoAVL_General raiz;
     
-    public ArbolAVL_Admin() {
+    public ArbolAVL_General() {
         raiz = null;
         codigoGraph += "digraph G{" + System.getProperty("line.separator");
         codigoGraph += "rankdir=TB;" + System.getProperty("line.separator");
@@ -29,12 +29,12 @@ public class ArbolAVL_Admin {
         pila = new Stack();
     }
     
-    public NodoAVL_Admin raizArbol() {
+    public NodoAVL_General raizArbol() {
         return raiz;
     }
     
     /*Método de rotación Izquierda Izquierda*/
-    private NodoAVL_Admin rotacionII(NodoAVL_Admin n, NodoAVL_Admin n1) {
+    private NodoAVL_General rotacionII(NodoAVL_General n, NodoAVL_General n1) {
         n.ramaIzquierda(n1.subArbolDerecho());
         n1.ramaDerecha(n);
         
@@ -50,7 +50,7 @@ public class ArbolAVL_Admin {
         return n1;
     }
     
-    private NodoAVL_Admin rotacionDD(NodoAVL_Admin n, NodoAVL_Admin n1) {
+    private NodoAVL_General rotacionDD(NodoAVL_General n, NodoAVL_General n1) {
         n.ramaDerecha(n1.subArbolIzquierdo());
         n1.ramaIzquierda(n);
         
@@ -66,10 +66,10 @@ public class ArbolAVL_Admin {
         return n1;
     }
     
-    private NodoAVL_Admin rotacionID(NodoAVL_Admin n, NodoAVL_Admin n1) {
-        NodoAVL_Admin n2;
+    private NodoAVL_General rotacionID(NodoAVL_General n, NodoAVL_General n1) {
+        NodoAVL_General n2;
         
-        n2 = (NodoAVL_Admin) n1.subArbolDerecho();
+        n2 = (NodoAVL_General) n1.subArbolDerecho();
         n.ramaIzquierda(n2.subArbolDerecho());
         n2.ramaDerecha(n);
         n1.ramaDerecha(n2.subArbolIzquierdo());
@@ -93,10 +93,10 @@ public class ArbolAVL_Admin {
         return n2;
     }
     
-    private NodoAVL_Admin rotacionDI(NodoAVL_Admin n, NodoAVL_Admin n1) {
-        NodoAVL_Admin n2;
+    private NodoAVL_General rotacionDI(NodoAVL_General n, NodoAVL_General n1) {
+        NodoAVL_General n2;
         
-        n2 = (NodoAVL_Admin)n1.subArbolIzquierdo();
+        n2 = (NodoAVL_General)n1.subArbolIzquierdo();
         
         n.ramaDerecha(n2.subArbolIzquierdo());
         n2.ramaIzquierda(n);
@@ -121,16 +121,16 @@ public class ArbolAVL_Admin {
         return n2;
     }
     
-    private NodoAVL_Admin insertarAVL(NodoAVL_Admin raiz, Comparador dt, Logical h, int x) {
-        NodoAVL_Admin n1;
+    private NodoAVL_General insertarAVL(NodoAVL_General raiz, Comparador dt, Logical h, int x) {
+        NodoAVL_General n1;
         
         if(raiz == null) {
-            raiz = new NodoAVL_Admin(dt);
+            raiz = new NodoAVL_General(dt);
             raiz.valorNodoEnString(x);
             h.setLogical(true);
         }else if(dt.menorQue(raiz.valorNodo())) {
-            NodoAVL_Admin izq;
-            izq = insertarAVL((NodoAVL_Admin) raiz.subArbolIzquierdo(), dt, h, x);
+            NodoAVL_General izq;
+            izq = insertarAVL((NodoAVL_General) raiz.subArbolIzquierdo(), dt, h, x);
             raiz.ramaIzquierda(izq);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -144,7 +144,7 @@ public class ArbolAVL_Admin {
                         raiz.fe = -1;
                         break;
                     case -1:
-                        n1 = (NodoAVL_Admin) raiz.subArbolIzquierdo();
+                        n1 = (NodoAVL_General) raiz.subArbolIzquierdo();
                         if(n1.fe == -1) {
                             raiz = rotacionII(raiz, n1);
                         }else {
@@ -154,15 +154,15 @@ public class ArbolAVL_Admin {
                 }
             }
         }else if(dt.mayorQue(raiz.valorNodo())) {
-            NodoAVL_Admin dr;
-            dr = insertarAVL((NodoAVL_Admin) raiz.subArbolDerecho(), dt, h, x);
+            NodoAVL_General dr;
+            dr = insertarAVL((NodoAVL_General) raiz.subArbolDerecho(), dt, h, x);
             raiz.ramaDerecha(dr);
             
             /*Regreso por los nodos del camino de busqueda*/
             if(h.booleanValue()) {
                 switch(raiz.fe) {
                     case 1:
-                        n1 = (NodoAVL_Admin) raiz.subArbolDerecho();
+                        n1 = (NodoAVL_General) raiz.subArbolDerecho();
                         if(n1.fe == +1) {
                             raiz = rotacionDD(raiz, n1);
                         }else {
@@ -193,9 +193,9 @@ public class ArbolAVL_Admin {
         raiz = insertarAVL(raiz, dato, h, x);
     }
     
-    static int altura(NodoAVL_Admin r) {
+    static int altura(NodoAVL_General r) {
         if(r != null) {
-            return mayor(altura((NodoAVL_Admin)r.subArbolIzquierdo()), altura((NodoAVL_Admin)r.subArbolDerecho())) + 1;
+            return mayor(altura((NodoAVL_General)r.subArbolIzquierdo()), altura((NodoAVL_General)r.subArbolDerecho())) + 1;
         }else {
             return 0;
         }
@@ -212,37 +212,37 @@ public class ArbolAVL_Admin {
         raiz = borrarAVL(raiz, dato, flag);
     }
     
-    private NodoAVL_Admin borrarAVL(NodoAVL_Admin r, Comparador clave, Logical cambiaAltura)  {
+    private NodoAVL_General borrarAVL(NodoAVL_General r, Comparador clave, Logical cambiaAltura)  {
         if(r == null) {
             System.out.println("Nodo no encontrado");
         }else if(clave.menorQue(r.valorNodo())) {
-            NodoAVL_Admin izquierda;
-            izquierda = borrarAVL((NodoAVL_Admin)r.subArbolIzquierdo(), clave, cambiaAltura);
+            NodoAVL_General izquierda;
+            izquierda = borrarAVL((NodoAVL_General)r.subArbolIzquierdo(), clave, cambiaAltura);
             r.ramaIzquierda(izquierda);
             if(cambiaAltura.booleanValue()) {
                 r = equilibrar1(r, cambiaAltura);
             }
         }else if(clave.mayorQue(r.valorNodo())) {
-            NodoAVL_Admin dr;
-            dr = borrarAVL((NodoAVL_Admin)r.subArbolDerecho(), clave, cambiaAltura);
+            NodoAVL_General dr;
+            dr = borrarAVL((NodoAVL_General)r.subArbolDerecho(), clave, cambiaAltura);
             r.ramaDerecha(dr);
             if(cambiaAltura.booleanValue()) {
                 r = equilibrar2(r, cambiaAltura);
             }
         /*Si no se encuentra el nodo*/    
         }else {
-            NodoAVL_Admin q;
+            NodoAVL_General q;
             q = r;  //Nodo que se va a quitar del arbol
             if(q.subArbolIzquierdo() == null) {
-                r = (NodoAVL_Admin) q.subArbolDerecho();
+                r = (NodoAVL_General) q.subArbolDerecho();
                 cambiaAltura.setLogical(true);
             }else if(q.subArbolDerecho() == null) {
-                r = (NodoAVL_Admin) q.subArbolIzquierdo();
+                r = (NodoAVL_General) q.subArbolIzquierdo();
                 cambiaAltura.setLogical(true);
             /*Tiene rama izquierda y derecha*/
             }else {
-                NodoAVL_Admin izquierda;
-                izquierda = reemplazar(r, (NodoAVL_Admin)r.subArbolIzquierdo(), cambiaAltura);
+                NodoAVL_General izquierda;
+                izquierda = reemplazar(r, (NodoAVL_General)r.subArbolIzquierdo(), cambiaAltura);
                 r.ramaIzquierda(izquierda);
                 if(cambiaAltura.booleanValue()) {
                     r = equilibrar1(r, cambiaAltura);
@@ -253,25 +253,25 @@ public class ArbolAVL_Admin {
         return r;
     }
     
-    private NodoAVL_Admin reemplazar(NodoAVL_Admin n, NodoAVL_Admin act, Logical cambiaAltura) {
+    private NodoAVL_General reemplazar(NodoAVL_General n, NodoAVL_General act, Logical cambiaAltura) {
         if(act.subArbolDerecho() != null) {
-            NodoAVL_Admin d;
-            d = reemplazar(n, (NodoAVL_Admin)act.subArbolDerecho(), cambiaAltura);
+            NodoAVL_General d;
+            d = reemplazar(n, (NodoAVL_General)act.subArbolDerecho(), cambiaAltura);
             act.ramaDerecha(d);
             if(cambiaAltura.booleanValue())
                 act = equilibrar2(act, cambiaAltura);
         }else {
             n.nuevoValor(act.valorNodo());
             n = act;
-            act = (NodoAVL_Admin)act.subArbolIzquierdo();
+            act = (NodoAVL_General)act.subArbolIzquierdo();
             n = null;
             cambiaAltura.setLogical(true);
         }
         return act;
     }
     
-    private NodoAVL_Admin equilibrar1(NodoAVL_Admin n, Logical cambiaAltura) {
-        NodoAVL_Admin n1;
+    private NodoAVL_General equilibrar1(NodoAVL_General n, Logical cambiaAltura) {
+        NodoAVL_General n1;
         
         switch(n.fe) {
             case -1:
@@ -282,7 +282,7 @@ public class ArbolAVL_Admin {
                 cambiaAltura.setLogical(false);
                 break;
             case +1:
-                n1 = (NodoAVL_Admin)n.subArbolDerecho();
+                n1 = (NodoAVL_General)n.subArbolDerecho();
                 if(n1.fe >= 0) {
                     if(n1.fe == 0)
                         cambiaAltura.setLogical(false);
@@ -294,12 +294,12 @@ public class ArbolAVL_Admin {
         return n;
     }
     
-    private NodoAVL_Admin equilibrar2(NodoAVL_Admin n, Logical cambiaAltura) {
-        NodoAVL_Admin n1;
+    private NodoAVL_General equilibrar2(NodoAVL_General n, Logical cambiaAltura) {
+        NodoAVL_General n1;
         
         switch(n.fe) {
             case -1:
-                n1 = (NodoAVL_Admin)n.subArbolIzquierdo();
+                n1 = (NodoAVL_General)n.subArbolIzquierdo();
                 if(n1.fe <= 0) {
                     if(n1.fe == 0)
                         cambiaAltura.setLogical(false);
@@ -318,12 +318,12 @@ public class ArbolAVL_Admin {
         return n;
     }
     
-    static int imprimir(NodoAVL_Admin r) {
+    static int imprimir(NodoAVL_General r) {
         if(r != null) {
             int cuantosIzquierda, cuantosDerecha;
-            cuantosIzquierda = imprimir((NodoAVL_Admin)r.subArbolIzquierdo());
+            cuantosIzquierda = imprimir((NodoAVL_General)r.subArbolIzquierdo());
             System.out.print(r.valorNodoEnString() + "\n");
-            cuantosDerecha = imprimir((NodoAVL_Admin)r.subArbolDerecho());
+            cuantosDerecha = imprimir((NodoAVL_General)r.subArbolDerecho());
             System.out.println("**************************************************************");
             System.out.println("Cuantos a la izquierda ->" + cuantosIzquierda);
             System.out.println("Cuantos a la derecha ->" + cuantosDerecha);
@@ -334,23 +334,23 @@ public class ArbolAVL_Admin {
         }
     }
     
-    static String graficar(NodoAVL_Admin r) {
+    static String graficar(NodoAVL_General r) {
         
         if(r != null) {
             codigoGraph += "nodo" + idNodo + " [ label = "+ r.valorNodoEnString() +" ];" + System.getProperty("line.separator");
             pila.push("nodo"+idNodo);
             idNodo++;
             
-            if((NodoAVL_Admin)r.subArbolIzquierdo() != null) {
+            if((NodoAVL_General)r.subArbolIzquierdo() != null) {
                 String aux = pila.pop();
                 enlaceGraph += aux + " -> nodo" + idNodo + System.getProperty("line.separator");
-                graficar((NodoAVL_Admin)r.subArbolIzquierdo());
+                graficar((NodoAVL_General)r.subArbolIzquierdo());
                 pila.push(aux);
             }
-            if((NodoAVL_Admin)r.subArbolDerecho() != null) {
+            if((NodoAVL_General)r.subArbolDerecho() != null) {
                 String aux = pila.pop();
                 enlaceGraph += aux + " -> nodo" + idNodo + System.getProperty("line.separator");
-                graficar((NodoAVL_Admin)r.subArbolDerecho());
+                graficar((NodoAVL_General)r.subArbolDerecho());
             }
             return codigoGraph + enlaceGraph;
         }else {
