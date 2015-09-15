@@ -1,5 +1,10 @@
 package edd.webserviceexterno.datos;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  *
  * @author Marvin
@@ -117,6 +122,45 @@ public class Lista_Buses {
         }
         
         return codigoGraph + enlaceGraph;
+    }
+    
+    public void crearArchivoGraphviz(String contenido) throws IOException {
+        
+        /*Termino de escribir el contenido del archivo de graphviz*/
+        contenido += "}";
+        
+        File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.txt");
+        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        try (BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(contenido);
+        }
+        System.out.println("Done writting Graphviz [lista_buses] file.");
+        
+        try {
+            String dotPath = "C:\\Archivos de programa\\Graphviz2.38\\bin\\dot.exe";
+            String fileInputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.txt";
+            String fileOutputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.jpg";
+            String tParam = "-Tjpg";
+            String tOParam = "-o";
+            
+            String[] cmd = new String[5];
+            cmd[0] = dotPath;
+            cmd[1] = tParam;
+            cmd[2] = fileInputPath;
+            cmd[3] = tOParam;
+            cmd[4] = fileOutputPath;
+            
+            Runtime rt = Runtime.getRuntime();
+            rt.exec(cmd);
+            
+            System.out.println("Done making Graphviz [lista_buses] image.");
+            
+        } catch(IOException ex) {
+        
+        } finally {   
+        
+        }
+        
     }
     
 }
