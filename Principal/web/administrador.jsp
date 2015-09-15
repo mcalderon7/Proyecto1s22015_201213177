@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Flujo de Transmetro</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="stylesheet" type="text/css" href="login/css/style.css" />
     </head>
     <body>
     <div class="container">
@@ -25,6 +25,7 @@
                         <a href="crear_estacion_general.jsp">Crear Estaciones Generales</a>
                         <a href="crear_bus.jsp">Crear Bus</a>
                         <a href="crear_ruta.jsp">Crear Ruta</a>
+                        <a href="reporteria.jsp">Reporteria</a>
                 </nav>
 
                 <div class="support-note">
