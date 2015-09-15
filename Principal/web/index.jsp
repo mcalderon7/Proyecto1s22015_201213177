@@ -17,14 +17,13 @@
         <header>
 
                 <h1>Flujo de <strong>Transmetro</strong></h1>
-                <h2>El mejor automatizador de procesos</h2>
+                <h2>El mejor automatizador de procesos</h2><br><br><br>
 
                 <nav class="codrops-demos">
-                        <%--<a href="index.html">Registrarse</a>
-                        <a href="index2.html">Demo 2</a>
-                        <a href="index3.html">Demo 3</a>
-                        <a class="current-demo" href="index4.html">Demo 4</a>
-                        <a href="index5.html">Demo 5</a> --%>
+                        <a class="current-demo" href="index.jsp">Soy Administrador</a>
+                        <a href="index2.html">Login Choferes</a>
+                        <a href="index3.html">Login Estaciones Generales</a>
+                        <a href="index5.html">Login Estaciones Clave</a>
                 </nav>
 
                 <div class="support-note">
