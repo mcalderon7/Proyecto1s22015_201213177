@@ -53,6 +53,8 @@
         <a href="crear_chofer.jsp">Crear Choferes</a>
         <a href="crear_estacion_general.jsp">Crear Estaciones Generales</a>
         <a href="crear_estacion_clave.jsp">Crear Estaciones Clave</a>
+        <a href="crear_ruta.jsp">Crear Ruta</a>
+        <a href="crear_bus.jsp">Crear Bus</a>
     </nav>
     
     <div id="wrapper">
