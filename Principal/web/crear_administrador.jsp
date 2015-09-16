@@ -46,6 +46,17 @@
 	
 </head>
 <body>
+    
+    <!-- Codrops top bar -->
+    <div class="codrops-top">
+        <span class="right">
+            <a href="index.jsp">
+                <strong>Logout</strong>
+            </a>
+        </span>
+    </div>
+    <!--/ Codrops top bar -->
+    
     <br><br><header><h1><b><center><font size="8">Bienvenido <strong>Administrador!</strong></font></center></b></h1></header><br><br>
     
     <nav class="codrops-demos">

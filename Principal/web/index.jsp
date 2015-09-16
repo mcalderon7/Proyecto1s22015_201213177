@@ -29,13 +29,14 @@
     </head>
     <body>
         <div class="container">
+            
             <header>
 
                     <h1><b><font size="8">Flujo de <strong>Transmetro</strong></font></b></h1>
                     <h2><font size="4">El mejor automatizador de procesos</font></h2><br><br><br>
 
                     <nav class="codrops-demos">
-                            <!--<a href="crear_administrador.jsp">Soy Administrador</a>-->
+                            <a class="current-demo" href="index.jsp">Login Administrador</a>
                             <a href="chofer.jsp">Login Choferes</a>
                             <a href="estacion_general.jsp">Login Estaciones Generales</a>
                             <a href="estacion_clave.jsp">Login Estaciones Clave</a>
@@ -55,11 +56,11 @@
                         </p>
                         <p>
                             <label for="password">Contraseña</label>
-                            <input type="password" name='password' placeholder="Contraseña" required> 
+                            <input type="password" name="password" id="contrasena" placeholder="Contraseña" required> 
                         </p>
 
                         <p>
-                            <input type="submit" name="submit" value="Continuar" onclick="validLogin(document.getElementById('login').value);">
+                            <input type="submit" name="submit" value="Continuar" onclick="validLogin(document.getElementById('id').value, document.getElementById('contrasena'));">
                         </p>       
                     </form>​
             </section>
