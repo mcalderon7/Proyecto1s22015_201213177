@@ -8,67 +8,97 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>HTML5 Contact Form | Codeconvey</title>
-		<meta name="description" content="HTML5 comes with many awesome features. One of the feature is form validation without using any kind of javascript or jquery." />
-		<meta name="keywords" content="form,html form,css form,html5 contact form,contact form" />
-		<meta name="author" content="Codeconvey" />
-		<link rel="shortcut icon" href="../favicon.ico">
-		<link rel="stylesheet" type="text/css" href="forms/css/demo.css" />
-        <link rel="stylesheet" type="text/css" href="forms/css/component.css" />
-		<!--[if IE]>
-  		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-        <script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-		  ga('create', 'UA-47356263-1', 'codeconvey.com');
-		  ga('send', 'pageview');
-		</script>
-	</head>
-	<body>
-		<div class="container">
-			<!-- Top Navigation -->
-			<div class="cctop clearfix">
-               <a href="http://codeconvey.com/Tutorials/CSSFeedbackcommentForm/"><span>Previous Demo</span></a>
-               <span class="right"><a href="http://codeconvey.com/?p=130"><span>Back to the Codeconvey Article</span></a></span>
-			</div>
-			<header class="ccheader">
-				<h1>HTML5 Contact Form</h1>	
-			</header>
-			<div class="wrapper">
-				<form method="post" action="" class="ccform">
-                <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-user fa-2x fa-spin"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Full Name" required>
-                </div>
-                <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-envelope fa-2x"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Email" required>
-                </div>
-                <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-mobile-phone fa-2x"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Phone">
-                </div>
-                 <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Subject" required>
-                </div>
-                <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-comment fa-2x"></i></span>
-                    <textarea class="ccformfield" name="comments" rows="8" placeholder="Message" required></textarea>
-                </div>
-                <div class="ccfield-prepend">
-                    <input class="ccbtn" type="submit" value="Submit">
-                </div>
+
+
+	<!-- General meta information -->
+	<title>Registro de Administradores</title>
+	<meta charset="utf-8" />
+	<!-- // General meta information -->
+	
+	
+	<!-- Load Javascript -->
+	<script type="text/javascript" src="forms/js/jquery.js"></script>
+	<script type="text/javascript" src="forms/js/jquery.query-2.1.7.js"></script>
+	<script type="text/javascript" src="forms/js/rainbows.js"></script>
+	<!-- // Load Javascipt -->
+
+	<!-- Load stylesheets -->
+	<link type="text/css" rel="stylesheet" href="forms/css/style.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="login_x/css/style.css" />
+	<!-- // Load stylesheets -->
+	
+<script>
+
+
+	$(document).ready(function(){
+ 
+	$("#submit1").hover(
+	function() {
+	$(this).animate({"opacity": "0"}, "slow");
+	},
+	function() {
+	$(this).animate({"opacity": "1"}, "slow");
+	});
+ 	});
+
+
+</script>
+	
+</head>
+<body>
+    <br><br><header><h1><b><center><font size="8">Bienvenido <strong>Administrador!</strong></font></center></b></h1></header><br><br>
+    
+    <nav class="codrops-demos">
+        <a class="current-demo" href="crear_administrador.jsp">Crear Administrador</a>
+        <a href="crear_chofer.jsp">Crear Choferes</a>
+        <a href="crear_estacion_general.jsp">Crear Estaciones Generales</a>
+        <a href="crear_estacion_clave.jsp">Crear Estaciones Clave</a>
+    </nav>
+    
+    <div id="wrapper">
+    <div id="wrappertop"></div>
+
+    <div id="wrappermiddle">
+
+            <h2>Registro de Administradores</h2>
+            
+            <div id="username_input">
+
+                    <div id="username_inputleft"></div>
+
+                    <div id="username_inputmiddle">
+                    <form>
+                            <input type="text" name="link" id="url" value="Correo" onclick="this.value = ''">
+                            <img id="url_user" src="forms/images/mailicon.png" alt="">
+                    </form>
+                    </div>
+
+                    <div id="username_inputright"></div>
+
+            </div>
+
+            <div id="password_input">
+
+                    <div id="password_inputleft"></div>
+
+                    <div id="password_inputmiddle">
+                    <form>
+                            <input type="password" name="link" id="url" value="Password" onclick="this.value = ''">
+                            <img id="url_password" src="forms/images/passicon.png" alt="">
+                    </form>
+                    </div>
+
+                    <div id="password_inputright"></div>
+
+            </div>
+            
+            <div id="submit">
+                <form>
+                <input type="image" src="forms/images/submit_hover.png" id="submit1" value="Registrarse">
+                <input type="image" src="forms/images/submit.png" id="submit2" value="Registrarse">
                 </form>
-			</div>
-			
-		</div><!-- /container -->
-		
-	</body>
+            </div>
+	</div>
+    <div id="wrapperbottom"></div>
+</body>
 </html>
