@@ -9,18 +9,8 @@
 <html method="POST">
     <head>
         <script type="text/javascript">
-            function validLogin(login, pass){
-                if(login !== "admin" && pass !== "admin") {
-                    alert("Usuario incorrecto");
-                    document.forms[0].action = "index.jsp";
-                    document.forms[0].method = "post"; // "get"
-                    document.forms[0].submit();
-                }else {
-                    alert("Bienvenido Administrador!");
-                    document.forms[0].action = "crear_administrador.jsp";
-                    document.forms[0].method = "post"; // "get"
-                    document.forms[0].submit();
-                }
+            function validLogin(){
+                alert("Usuario incorrecto");
             }
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -60,10 +50,13 @@
                         </p>
 
                         <p>
-                            <input type="submit" name="submit" value="Continuar" onclick="validLogin(document.getElementById('id').value, document.getElementById('contrasena'));">
+                            <input type="submit" name="submit" value="Continuar" onclick="validLogin();">
                         </p>       
                     </form>​
             </section>
        </div>
+        
+        
+        
     </body>
 </html>
