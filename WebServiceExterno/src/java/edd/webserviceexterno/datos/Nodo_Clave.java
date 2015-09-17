@@ -4,24 +4,25 @@ package edd.webserviceexterno.datos;
  *
  * @author Marvin
  */
-public class Nodo {
+public class Nodo_Clave {
     
-    protected String correo;
+    protected String nombre;
+    protected String clave;
     protected String contraseña;
     protected String valorString;
     protected Object dato;
-    protected Nodo izquierdo;
-    protected Nodo derecho;
+    protected Nodo_Clave izquierdo;
+    protected Nodo_Clave derecho;
     
-    /*Administrador*/
-    public Nodo(Object valor, String mail, String password) {
+    public Nodo_Clave(Object valor, String name, String id, String password) {
         dato = valor;
-        correo = mail;
+        nombre = name;
+        clave = id;
         contraseña = password;
         izquierdo = derecho = null;
     }
     
-    public Nodo(Nodo ramaI, Object valor, Nodo ramaD) {
+    public Nodo_Clave(Nodo_Clave ramaI, Object valor, Nodo_Clave ramaD) {
         dato = valor;
         izquierdo = ramaI;
         derecho = ramaD;
@@ -39,11 +40,11 @@ public class Nodo {
         return dato;
     }
     
-    public Nodo subArbolIzquierdo() {
+    public Nodo_Clave subArbolIzquierdo() {
         return izquierdo;
     }
     
-    public Nodo subArbolDerecho() {
+    public Nodo_Clave subArbolDerecho() {
         return derecho;
     }
     
@@ -51,20 +52,24 @@ public class Nodo {
         dato = x;
     }
     
-    public void ramaIzquierda(Nodo n) {
+    public void ramaIzquierda(Nodo_Clave n) {
         izquierdo = n;
     }
     
-    public void ramaDerecha(Nodo n) {
+    public void ramaDerecha(Nodo_Clave n) {
         derecho = n;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getClave() {
+        return clave;
+    }
+    
+    public String getNombre() {
+        return nombre;
     }
 
     public String getContraseña() {
         return contraseña;
     }
-    
+
 }

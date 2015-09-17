@@ -37,7 +37,7 @@ public class Datos {
         String salida = "Podriamos decir que usted esta creando el administrador con correo "+ correo +" y con la contraseña: " + password;
         
         Numero elemento = new Numero(valor);
-        test.insertar(elemento, valor);
+        test.insertar(elemento, valor, correo, password);
         numNodos = ArbolAVL_Admin.imprimir(test.raizArbol());
         flag++;
         
@@ -116,6 +116,21 @@ public class Datos {
     @WebMethod(operationName = "CrearRuta")
     public String CrearRuta(@WebParam(name = "nombre") String nombre, @WebParam(name = "estaciones") String estaciones) {
         //TODO write your implementation code here:
+        return null;
+    }
+
+    /**
+     * Web service operation
+     * @param correo
+     * @param password
+     * @return
+     */
+    @WebMethod(operationName = "verificarAdministrador")
+    public String verificarAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) {
+        //TODO write your implementation code here:
+        
+        
+        
         return null;
     }
 }

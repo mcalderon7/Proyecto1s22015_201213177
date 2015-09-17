@@ -4,12 +4,12 @@ package edd.webserviceexterno.datos;
  *
  * @author Marvin
  */
-public class NodoAVL_General extends Nodo{
+public class NodoAVL_General extends Nodo_General {
     
     int fe;
     
-    public NodoAVL_General(Object valor) {
-        super(valor);
+    public NodoAVL_General(Object valor, String nombre, String clave, String contraseña) {
+        super(valor, nombre, clave, contraseña);
         fe = 0;
     }
     

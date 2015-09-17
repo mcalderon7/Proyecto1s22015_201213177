@@ -121,16 +121,16 @@ public class ArbolAVL_Admin {
         return n2;
     }
     
-    private NodoAVL_Admin insertarAVL(NodoAVL_Admin raiz, Comparador dt, Logical h, int x) {
+    private NodoAVL_Admin insertarAVL(NodoAVL_Admin raiz, Comparador dt, Logical h, int x, String correo, String contraseña) {
         NodoAVL_Admin n1;
         
         if(raiz == null) {
-            raiz = new NodoAVL_Admin(dt);
+            raiz = new NodoAVL_Admin(dt, correo, contraseña);
             raiz.valorNodoEnString(x);
             h.setLogical(true);
         }else if(dt.menorQue(raiz.valorNodo())) {
             NodoAVL_Admin izq;
-            izq = insertarAVL((NodoAVL_Admin) raiz.subArbolIzquierdo(), dt, h, x);
+            izq = insertarAVL((NodoAVL_Admin) raiz.subArbolIzquierdo(), dt, h, x, correo, contraseña);
             raiz.ramaIzquierda(izq);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -155,7 +155,7 @@ public class ArbolAVL_Admin {
             }
         }else if(dt.mayorQue(raiz.valorNodo())) {
             NodoAVL_Admin dr;
-            dr = insertarAVL((NodoAVL_Admin) raiz.subArbolDerecho(), dt, h, x);
+            dr = insertarAVL((NodoAVL_Admin) raiz.subArbolDerecho(), dt, h, x, correo, contraseña);
             raiz.ramaDerecha(dr);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -186,11 +186,11 @@ public class ArbolAVL_Admin {
         return raiz;
     }
     
-    public void insertar(Object valor, int x) {
+    public void insertar(Object valor, int x, String correo, String contraseña) {
         Comparador dato;
         Logical h = new Logical(false);
         dato = (Comparador) valor;
-        raiz = insertarAVL(raiz, dato, h, x);
+        raiz = insertarAVL(raiz, dato, h, x, correo, contraseña);
     }
     
     static int altura(NodoAVL_Admin r) {
@@ -199,6 +199,26 @@ public class ArbolAVL_Admin {
         }else {
             return 0;
         }
+    }
+    
+    public boolean existe(NodoAVL_Admin nodo, String correo, String password) {
+        
+        if(nodo != null) {
+            
+            if(nodo.correo.equals(correo) && nodo.contraseña.equals(password)) {
+                System.out.println("SE ENCONTRO EL NODO!");
+                return true;
+            }else {
+                if((NodoAVL_Admin)nodo.subArbolIzquierdo() != null) {
+                    existe((NodoAVL_Admin)nodo.subArbolIzquierdo(), correo, password);
+                }
+                if((NodoAVL_Admin)nodo.subArbolDerecho() != null) {
+                    existe((NodoAVL_Admin)nodo.subArbolDerecho(), correo, password);
+                }
+            }
+        }
+        System.out.println("NO SE ENCONTRO EL NODO!");
+        return false;
     }
     
     static int mayor(int x, int y) {

@@ -121,16 +121,16 @@ public class ArbolAVL_Chofer {
         return n2;
     }
     
-    private NodoAVL_Chofer insertarAVL(NodoAVL_Chofer raiz, Comparador dt, Logical h, int x) {
+    private NodoAVL_Chofer insertarAVL(NodoAVL_Chofer raiz, Comparador dt, Logical h, int x, String nombre, String apellido, String clave, String contraseña) {
         NodoAVL_Chofer n1;
         
         if(raiz == null) {
-            raiz = new NodoAVL_Chofer(dt);
+            raiz = new NodoAVL_Chofer(dt, nombre, apellido, clave, contraseña);
             raiz.valorNodoEnString(x);
             h.setLogical(true);
         }else if(dt.menorQue(raiz.valorNodo())) {
             NodoAVL_Chofer izq;
-            izq = insertarAVL((NodoAVL_Chofer) raiz.subArbolIzquierdo(), dt, h, x);
+            izq = insertarAVL((NodoAVL_Chofer) raiz.subArbolIzquierdo(), dt, h, x, nombre, apellido, clave, contraseña);
             raiz.ramaIzquierda(izq);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -155,7 +155,7 @@ public class ArbolAVL_Chofer {
             }
         }else if(dt.mayorQue(raiz.valorNodo())) {
             NodoAVL_Chofer dr;
-            dr = insertarAVL((NodoAVL_Chofer) raiz.subArbolDerecho(), dt, h, x);
+            dr = insertarAVL((NodoAVL_Chofer) raiz.subArbolDerecho(), dt, h, x, nombre, apellido, clave, contraseña);
             raiz.ramaDerecha(dr);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -186,11 +186,11 @@ public class ArbolAVL_Chofer {
         return raiz;
     }
     
-    public void insertar(Object valor, int x) {
+    public void insertar(Object valor, int x, String nombre, String apellido, String clave, String contraseña) {
         Comparador dato;
         Logical h = new Logical(false);
         dato = (Comparador) valor;
-        raiz = insertarAVL(raiz, dato, h, x);
+        raiz = insertarAVL(raiz, dato, h, x, nombre, apellido, clave, contraseña);
     }
     
     static int altura(NodoAVL_Chofer r) {

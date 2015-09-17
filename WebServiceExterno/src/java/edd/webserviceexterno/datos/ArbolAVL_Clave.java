@@ -121,16 +121,16 @@ public class ArbolAVL_Clave {
         return n2;
     }
     
-    private NodoAVL_Clave insertarAVL(NodoAVL_Clave raiz, Comparador dt, Logical h, int x) {
+    private NodoAVL_Clave insertarAVL(NodoAVL_Clave raiz, Comparador dt, Logical h, int x, String nombre, String clave, String contraseña) {
         NodoAVL_Clave n1;
         
         if(raiz == null) {
-            raiz = new NodoAVL_Clave(dt);
+            raiz = new NodoAVL_Clave(dt, nombre, clave, contraseña);
             raiz.valorNodoEnString(x);
             h.setLogical(true);
         }else if(dt.menorQue(raiz.valorNodo())) {
             NodoAVL_Clave izq;
-            izq = insertarAVL((NodoAVL_Clave) raiz.subArbolIzquierdo(), dt, h, x);
+            izq = insertarAVL((NodoAVL_Clave) raiz.subArbolIzquierdo(), dt, h, x, nombre, clave, contraseña);
             raiz.ramaIzquierda(izq);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -155,7 +155,7 @@ public class ArbolAVL_Clave {
             }
         }else if(dt.mayorQue(raiz.valorNodo())) {
             NodoAVL_Clave dr;
-            dr = insertarAVL((NodoAVL_Clave) raiz.subArbolDerecho(), dt, h, x);
+            dr = insertarAVL((NodoAVL_Clave) raiz.subArbolDerecho(), dt, h, x, nombre, clave, contraseña);
             raiz.ramaDerecha(dr);
             
             /*Regreso por los nodos del camino de busqueda*/
@@ -186,11 +186,11 @@ public class ArbolAVL_Clave {
         return raiz;
     }
     
-    public void insertar(Object valor, int x) {
+    public void insertar(Object valor, int x, String nombre, String clave, String contraseña) {
         Comparador dato;
         Logical h = new Logical(false);
         dato = (Comparador) valor;
-        raiz = insertarAVL(raiz, dato, h, x);
+        raiz = insertarAVL(raiz, dato, h, x, nombre, clave, contraseña);
     }
     
     static int altura(NodoAVL_Clave r) {

@@ -8,8 +8,8 @@ public class NodoAVL_Admin extends Nodo{
     
     int fe;
     
-    public NodoAVL_Admin(Object valor) {
-        super(valor);
+    public NodoAVL_Admin(Object valor, String correo, String contraseña) {
+        super(valor, correo, contraseña);
         fe = 0;
     }
     
