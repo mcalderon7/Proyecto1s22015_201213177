@@ -363,7 +363,7 @@ public class ArbolAVL_Chofer {
         /*Termino de escribir el contenido del archivo de graphviz*/
         contenido += "}";
         
-        File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama.txt");
+        File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_chofer.txt");
         FileWriter fw = new FileWriter(file.getAbsoluteFile());
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(contenido);
@@ -372,8 +372,8 @@ public class ArbolAVL_Chofer {
         
         try {
             String dotPath = "C:\\Archivos de programa\\Graphviz2.38\\bin\\dot.exe";
-            String fileInputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama.txt";
-            String fileOutputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama.jpg";
+            String fileInputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_chofer.txt";
+            String fileOutputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_chofer.jpg";
             String tParam = "-Tjpg";
             String tOParam = "-o";
             
