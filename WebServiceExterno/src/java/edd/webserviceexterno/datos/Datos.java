@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -20,6 +21,7 @@ import javax.jws.WebParam;
 @WebService(serviceName = "Datos")
 public class Datos {
     
+    HttpServletResponse res;
     ArbolAVL_Admin admin = new ArbolAVL_Admin();
     ArbolAVL_Chofer chofer = new ArbolAVL_Chofer();
     ArbolAVL_General estacion_general = new ArbolAVL_General();
@@ -169,5 +171,22 @@ public class Datos {
         //TODO write your implementation code here:
         return null;
     }
+
+    /**
+     * Web service operation
+     * @param correo
+     * @param password
+     * @return
+     */
+    @WebMethod(operationName = "verificarAdministrador")
+    public boolean verificarAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) {
+        //TODO write your implementation code here:
+        
+        /*Llamamos al método que verifica si existe el nodo con esa información*/
+        boolean bandera = admin.existe(admin.raiz, correo, password);
+        
+        return bandera;
+    }
+
 
 }
