@@ -111,66 +111,197 @@
     try {
 	
         String flag = request.getParameter("submit_hit");
+        System.out.println("***********************************************************");
+        System.out.println("IMPRIMIENDO EL FLAG ---->  " + flag);
+        System.out.println("***********************************************************");
         
-        if(!"".equals(flag)) {
+        if(flag != null) {
             
             String tipo = "";
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
             
-            if(null != flag) switch (flag) {
-                case "AVL Administrador":
-                    tipo = "admin";
-                    port.reporteAdministrador();
-                    break;
-                case "AVL Chofer":
-                    tipo = "chofer";
-                    port.reporteChofer();
-                    break;
-                case "AVL Estacion Clave":
-                    tipo = "estacion_clave";
-                    port.reporteEstacionClave();
-                    break;
-                case "AVL Estacion General":
-                    tipo = "estacion_general";
-                    port.reporteEstacionGeneral();
-                    break;
-                case "Lista Buses":
-                    tipo = "bus";
-                    port.reporteBus();
-                    break;
-                case "Lista Ruta":
-                    tipo = "ruta";
-                    port.reporteRuta();
-                    break;
+            if("AVL Administrador".equals(flag)) {
+                tipo = "admin";
+                port.reporteAdministrador();
+                byte[] result = port.imageToByteArray(tipo);
+
+                /*BYTE ARRAY TO IMAGE FILE*/
+
+                ByteArrayInputStream bis = new ByteArrayInputStream(result);
+                Iterator<?> readers = ImageIO.getImageReadersByFormatName("jpg");
+
+                ImageReader reader = (ImageReader) readers.next();
+                Object source = bis; 
+                ImageInputStream iis = ImageIO.createImageInputStream(source); 
+                reader.setInput(iis, true);
+                ImageReadParam param = reader.getDefaultReadParam();
+
+                Image image = reader.read(0, param);
+
+                BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+
+                Graphics2D g2 = bufferedImage.createGraphics();
+                g2.drawImage(image, null, null);
+
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                ImageIO.write(bufferedImage, "jpg", imageFile);
+
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
+            }else if("AVL Chofer".equals(flag)) {
+                tipo = "chofer";
+                port.reporteChofer();
+                byte[] result = port.imageToByteArray(tipo);
+
+                /*BYTE ARRAY TO IMAGE FILE*/
+
+                ByteArrayInputStream bis = new ByteArrayInputStream(result);
+                Iterator<?> readers = ImageIO.getImageReadersByFormatName("jpg");
+
+                ImageReader reader = (ImageReader) readers.next();
+                Object source = bis; 
+                ImageInputStream iis = ImageIO.createImageInputStream(source); 
+                reader.setInput(iis, true);
+                ImageReadParam param = reader.getDefaultReadParam();
+
+                Image image = reader.read(0, param);
+
+                BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+
+                Graphics2D g2 = bufferedImage.createGraphics();
+                g2.drawImage(image, null, null);
+
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                ImageIO.write(bufferedImage, "jpg", imageFile);
+
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
+            }else if("AVL Estacion Clave".equals(flag)) {
+                tipo = "estacion_clave";
+                port.reporteEstacionClave();
+                byte[] result = port.imageToByteArray(tipo);
+
+                /*BYTE ARRAY TO IMAGE FILE*/
+
+                ByteArrayInputStream bis = new ByteArrayInputStream(result);
+                Iterator<?> readers = ImageIO.getImageReadersByFormatName("jpg");
+
+                ImageReader reader = (ImageReader) readers.next();
+                Object source = bis; 
+                ImageInputStream iis = ImageIO.createImageInputStream(source); 
+                reader.setInput(iis, true);
+                ImageReadParam param = reader.getDefaultReadParam();
+
+                Image image = reader.read(0, param);
+
+                BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+
+                Graphics2D g2 = bufferedImage.createGraphics();
+                g2.drawImage(image, null, null);
+
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                ImageIO.write(bufferedImage, "jpg", imageFile);
+
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
+            }else if("AVL Estacion General".equals(flag)) {
+                tipo = "estacion_general";
+                port.reporteEstacionGeneral();
+                byte[] result = port.imageToByteArray(tipo);
+
+                /*BYTE ARRAY TO IMAGE FILE*/
+
+                ByteArrayInputStream bis = new ByteArrayInputStream(result);
+                Iterator<?> readers = ImageIO.getImageReadersByFormatName("jpg");
+
+                ImageReader reader = (ImageReader) readers.next();
+                Object source = bis; 
+                ImageInputStream iis = ImageIO.createImageInputStream(source); 
+                reader.setInput(iis, true);
+                ImageReadParam param = reader.getDefaultReadParam();
+
+                Image image = reader.read(0, param);
+
+                BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+
+                Graphics2D g2 = bufferedImage.createGraphics();
+                g2.drawImage(image, null, null);
+
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                ImageIO.write(bufferedImage, "jpg", imageFile);
+
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
+            }else if("Lista Buses".equals(flag)) {
+                tipo = "bus";
+                port.reporteBus();
+                byte[] result = port.imageToByteArray(tipo);
+
+                /*BYTE ARRAY TO IMAGE FILE*/
+
+                ByteArrayInputStream bis = new ByteArrayInputStream(result);
+                Iterator<?> readers = ImageIO.getImageReadersByFormatName("jpg");
+
+                ImageReader reader = (ImageReader) readers.next();
+                Object source = bis; 
+                ImageInputStream iis = ImageIO.createImageInputStream(source); 
+                reader.setInput(iis, true);
+                ImageReadParam param = reader.getDefaultReadParam();
+
+                Image image = reader.read(0, param);
+
+                BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+
+                Graphics2D g2 = bufferedImage.createGraphics();
+                g2.drawImage(image, null, null);
+
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                ImageIO.write(bufferedImage, "jpg", imageFile);
+
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
+            }else if("Lista Ruta".equals(flag)) {
+                tipo = "ruta";
+                port.reporteRuta();
+                byte[] result = port.imageToByteArray(tipo);
+
+                /*BYTE ARRAY TO IMAGE FILE*/
+
+                ByteArrayInputStream bis = new ByteArrayInputStream(result);
+                Iterator<?> readers = ImageIO.getImageReadersByFormatName("jpg");
+
+                ImageReader reader = (ImageReader) readers.next();
+                Object source = bis; 
+                ImageInputStream iis = ImageIO.createImageInputStream(source); 
+                reader.setInput(iis, true);
+                ImageReadParam param = reader.getDefaultReadParam();
+
+                Image image = reader.read(0, param);
+
+                BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+
+                Graphics2D g2 = bufferedImage.createGraphics();
+                g2.drawImage(image, null, null);
+
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                ImageIO.write(bufferedImage, "jpg", imageFile);
+
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
+                System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
             }
-
-            byte[] result = port.imageToByteArray(tipo);
-            
-            /*BYTE ARRAY TO IMAGE FILE*/
-            
-            ByteArrayInputStream bis = new ByteArrayInputStream(result);
-            Iterator<?> readers = ImageIO.getImageReadersByFormatName("jpg");
-
-            ImageReader reader = (ImageReader) readers.next();
-            Object source = bis; 
-            ImageInputStream iis = ImageIO.createImageInputStream(source); 
-            reader.setInput(iis, true);
-            ImageReadParam param = reader.getDefaultReadParam();
-
-            Image image = reader.read(0, param);
-            
-            BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
-
-            Graphics2D g2 = bufferedImage.createGraphics();
-            g2.drawImage(image, null, null);
-
-            File imageFile = new File("diagrama_"+ tipo +".jpg");
-            ImageIO.write(bufferedImage, "jpg", imageFile);
-
-            System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
-            System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
-            System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
             
         }
 	
@@ -180,16 +311,5 @@
     }
     %>
     <%-- end web service invocation --%>
-    <%-- start web service invocation --%><hr/>
-    <%
-    try {
-	edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
-	edd.webserviceexterno.datos.Datos port = service.getDatosPort();
-	port.reporteAdministrador();
-    } catch (Exception ex) {
-	// TODO handle custom exceptions here
-    }
-    %>
-    <%-- end web service invocation --%><hr/>
     </body>
 </html>
