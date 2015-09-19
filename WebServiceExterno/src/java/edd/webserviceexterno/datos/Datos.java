@@ -6,9 +6,12 @@
 
 package edd.webserviceexterno.datos;
 
-import javax.jws.WebService;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import javax.jws.WebService;
 
 /**
  *
@@ -116,7 +119,8 @@ public class Datos {
         int valor = (id_bus.hashCode() > 0) ? id_bus.hashCode() : id_bus.hashCode() * -1;
         String salida = "Podriamos decir que usted esta creando el administrador con id: " + id_bus;
         bus.insertar(valor, id_bus);
-        
+        bus.ordenamientoBurbuja(bus);
+        System.out.println("Cantidad de nodos de los buses: " + bus.getCantidadNodos());
         return salida;
     }
 
@@ -132,7 +136,8 @@ public class Datos {
         int valor = (nombre.hashCode() > 0) ? nombre.hashCode() : nombre.hashCode() * -1;
         String salida = "Podriamos decir que usted esta creando el administrador con id: " + nombre;
         ruta.insertar(valor, nombre, estaciones);
-        
+        ruta.ordenamientoBurbuja(ruta);
+        System.out.println("Cantidad de nodos de las rutas: " + ruta.getCantidadNodos());
         return salida;
     }
 
@@ -200,6 +205,91 @@ public class Datos {
         
         return bandera;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reporteAdministrador")
+    public void reporteAdministrador() {
+        //TODO write your implementation code here:
+        try {
+            String contenido = ArbolAVL_Admin.graficar(admin.raizArbol());
+            ArbolAVL_Admin.crearArchivoGraphviz(contenido);
+        } catch (IOException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reporteChofer")
+    public void reporteChofer() {
+        //TODO write your implementation code here:
+        try {
+            String contenido = ArbolAVL_Chofer.graficar(chofer.raizArbol());
+            ArbolAVL_Chofer.crearArchivoGraphviz(contenido);
+        } catch (IOException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reporteEstacionClave")
+    public void reporteEstacionClave() {
+        //TODO write your implementation code here:
+        try {
+            String contenido = ArbolAVL_Clave.graficar(estacion_clave.raizArbol());
+            ArbolAVL_Clave.crearArchivoGraphviz(contenido);
+        } catch (IOException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reporteEstacionGeneral")
+    public void reporteEstacionGeneral() {
+        //TODO write your implementation code here:
+        try {
+            String contenido = ArbolAVL_General.graficar(estacion_general.raizArbol());
+            ArbolAVL_General.crearArchivoGraphviz(contenido);
+        } catch (IOException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reporteRuta")
+    public void reporteRuta() {
+        //TODO write your implementation code here:
+        try {
+            String contenido = Lista_Buses.graficar();
+            Lista_Buses.crearArchivoGraphviz(contenido);
+        } catch (IOException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "reporteBus")
+    public void reporteBus() {
+        //TODO write your implementation code here:
+        try {
+            String contenido = Lista_Ruta.graficar();
+            Lista_Ruta.crearArchivoGraphviz(contenido);
+        } catch (IOException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
 
 }

@@ -11,10 +11,10 @@ import java.io.IOException;
  */
 public class Lista_Ruta {
     
-    int idNodo = 0;
-    String codigoGraph = "";
-    String enlaceGraph = "";
-    private Nodo_Lista_Ruta cabeza;
+    static int idNodo = 0;
+    static String codigoGraph = "";
+    static String enlaceGraph = "";
+    static private Nodo_Lista_Ruta cabeza;
     
     public Lista_Ruta() {
         cabeza = null;
@@ -112,7 +112,7 @@ public class Lista_Ruta {
         
     }
     
-    public String graficar() {
+    static String graficar() {
         Nodo_Lista_Ruta aux = cabeza;
         
         while(aux != null) {
@@ -124,7 +124,7 @@ public class Lista_Ruta {
         return codigoGraph + enlaceGraph;
     }
     
-    public void crearArchivoGraphviz(String contenido) throws IOException {
+    static void crearArchivoGraphviz(String contenido) throws IOException {
         
         /*Termino de escribir el contenido del archivo de graphviz*/
         contenido += "}";

@@ -11,10 +11,10 @@ import java.io.IOException;
  */
 public class Lista_Buses {
     
-    int idNodo = 0;
-    String codigoGraph = "";
-    String enlaceGraph = "";
-    private Nodo_Lista cabeza;
+    static int idNodo = 0;
+    static String codigoGraph = "";
+    static String enlaceGraph = "";
+    static private Nodo_Lista cabeza;
     
     public Lista_Buses() {
         cabeza = null;
@@ -108,11 +108,13 @@ public class Lista_Buses {
                 aux1 = aux1.siguiente;
             }
             
+        }else {
+            System.out.println("La lista se encuentra ordenada!");
         }
         
     }
     
-    public String graficar() {
+    static String graficar() {
         Nodo_Lista aux = cabeza;
         
         while(aux != null) {
@@ -124,7 +126,7 @@ public class Lista_Buses {
         return codigoGraph + enlaceGraph;
     }
     
-    public void crearArchivoGraphviz(String contenido) throws IOException {
+    static void crearArchivoGraphviz(String contenido) throws IOException {
         
         /*Termino de escribir el contenido del archivo de graphviz*/
         contenido += "}";
