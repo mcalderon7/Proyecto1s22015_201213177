@@ -116,7 +116,7 @@ public class Lista_Ruta {
         Nodo_Lista_Ruta aux = cabeza;
         
         while(aux != null) {
-            codigoGraph += "nodo" + idNodo + " [ label = \"Id Bus: "+ aux.ruta +"\" ];" + System.getProperty("line.separator");
+            codigoGraph += "nodo" + idNodo + " [ label = \"Id Ruta: "+ aux.ruta +"\" ];" + System.getProperty("line.separator");
             enlaceGraph += "nodo" + idNodo + " -> nodo" + (idNodo + 1) + System.getProperty("line.separator");
             aux = aux.siguiente;
         }
@@ -129,7 +129,7 @@ public class Lista_Ruta {
         /*Termino de escribir el contenido del archivo de graphviz*/
         contenido += "}";
         
-        File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.txt");
+        File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_ruta.txt");
         FileWriter fw = new FileWriter(file.getAbsoluteFile());
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(contenido);
@@ -138,8 +138,8 @@ public class Lista_Ruta {
         
         try {
             String dotPath = "C:\\Archivos de programa\\Graphviz2.38\\bin\\dot.exe";
-            String fileInputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.txt";
-            String fileOutputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.jpg";
+            String fileInputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_ruta.txt";
+            String fileOutputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_ruta.jpg";
             String tParam = "-Tjpg";
             String tOParam = "-o";
             

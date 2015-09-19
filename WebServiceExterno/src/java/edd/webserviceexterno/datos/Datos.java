@@ -6,6 +6,10 @@
 
 package edd.webserviceexterno.datos;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -289,6 +293,69 @@ public class Datos {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    /**
+     * Web service operation
+     * @param tipo
+     * @return 
+     * @throws java.io.FileNotFoundException 
+     */
+    @WebMethod(operationName = "imageToByteArray")
+    public byte[] imageToByteArray(@WebParam(name = "tipo") String tipo) {
+        //TODO write your implementation code here:
+        byte[] bytes = null;
+        String path = "";
+        
+        if(null != tipo) switch (tipo) {
+            case "admin":
+                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_admin.jpg";
+                break;
+            case "chofer":
+                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_chofer.jpg";
+                break;
+            case "estacion_clave":
+                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_estacion_clave.jpg";
+                break;
+            case "estacion_general":
+                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_general.jpg";
+                break;
+            case "bus":
+                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.jpg";
+                break;
+            case "ruta":
+                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_ruta.jpg";
+                break;
+        }
+        
+        File file = new File(path);
+        FileInputStream fis;
+        try {
+            fis = new FileInputStream(file);
+            //create FileInputStream which obtains input bytes from a file in a file system
+            //FileInputStream is meant for reading streams of raw bytes such as image data. For reading streams of characters, consider using FileReader.
+            
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] buf = new byte[1024];
+            try {
+                for (int readNum; (readNum = fis.read(buf)) != -1;) {
+                    //Writes to this byte array output stream
+                    bos.write(buf, 0, readNum); 
+                    System.out.println("read " + readNum + " bytes,");
+                }
+                
+                bytes = bos.toByteArray();
+                
+            } catch (IOException ex) {
+                Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+ 
+        return bytes;
+    }
+
 
 
 
