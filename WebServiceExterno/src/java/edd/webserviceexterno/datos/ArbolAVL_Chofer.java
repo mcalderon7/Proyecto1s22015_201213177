@@ -201,6 +201,26 @@ public class ArbolAVL_Chofer {
         }
     }
     
+    public boolean existe(NodoAVL_Chofer nodo, String nombre, String apellido, String password) {
+        
+        if(nodo != null) {
+            
+            if(nodo.nombre.equals(nombre) && nodo.apellido.equals(apellido) && nodo.contraseña.equals(password)) {
+                System.out.println("SE ENCONTRO EL NODO!");
+                return true;
+            }else {
+                if((NodoAVL_Chofer)nodo.subArbolIzquierdo() != null) {
+                    existe((NodoAVL_Chofer)nodo.subArbolIzquierdo(), nombre, apellido, password);
+                }
+                if((NodoAVL_Chofer)nodo.subArbolDerecho() != null) {
+                    existe((NodoAVL_Chofer)nodo.subArbolDerecho(), nombre, apellido, password);
+                }
+            }
+        }
+        System.out.println("NO SE ENCONTRO EL NODO!");
+        return false;
+    }
+    
     static int mayor(int x, int y) {
         return (x > y ? x : y);
     }

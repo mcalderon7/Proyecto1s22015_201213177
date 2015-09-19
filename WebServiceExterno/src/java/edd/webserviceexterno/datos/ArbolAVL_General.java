@@ -201,6 +201,26 @@ public class ArbolAVL_General {
         }
     }
     
+    public boolean existe(NodoAVL_General nodo, String nombre, String password) {
+        
+        if(nodo != null) {
+            
+            if(nodo.nombre.equals(nombre) && nodo.contraseña.equals(password)) {
+                System.out.println("SE ENCONTRO EL NODO!");
+                return true;
+            }else {
+                if((NodoAVL_General)nodo.subArbolIzquierdo() != null) {
+                    existe((NodoAVL_General)nodo.subArbolIzquierdo(), nombre, password);
+                }
+                if((NodoAVL_General)nodo.subArbolDerecho() != null) {
+                    existe((NodoAVL_General)nodo.subArbolDerecho(), nombre, password);
+                }
+            }
+        }
+        System.out.println("NO SE ENCONTRO EL NODO!");
+        return false;
+    }
+    
     static int mayor(int x, int y) {
         return (x > y ? x : y);
     }

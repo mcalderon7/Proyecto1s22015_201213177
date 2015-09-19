@@ -23,7 +23,6 @@ public class Datos {
     ArbolAVL_Clave estacion_clave = new ArbolAVL_Clave();
     Lista_Buses bus = new Lista_Buses();
     Lista_Ruta ruta = new Lista_Ruta();
-    int flag = 0;
     
     /**
      * Web service operation
@@ -149,6 +148,55 @@ public class Datos {
         
         /*Llamamos al método que verifica si existe el nodo con esa información*/
         boolean bandera = admin.existe(admin.raiz, correo, password);
+        
+        return bandera;
+    }
+
+    /**
+     * Web service operation
+     * @param nombre
+     * @param password
+     * @return
+     */
+    @WebMethod(operationName = "verificarEstacionClave")
+    public boolean verificarEstacionClave(@WebParam(name = "nombre") String nombre, @WebParam(name = "password") String password) {
+        //TODO write your implementation code here:
+        
+        /*Llamamos al método que verifica si existe el nodo con esa información*/
+        boolean bandera = estacion_clave.existe(estacion_clave.raiz, nombre, password);
+        
+        return bandera;
+    }
+
+    /**
+     * Web service operation
+     * @param nombre
+     * @param password
+     * @return
+     */
+    @WebMethod(operationName = "verificarEstacionGeneral")
+    public boolean verificarEstacionGeneral(@WebParam(name = "nombre") String nombre, @WebParam(name = "password") String password) {
+        //TODO write your implementation code here:
+        
+        /*Llamamos al método que verifica si existe el nodo con esa información*/
+        boolean bandera = estacion_general.existe(estacion_general.raiz, nombre, password);
+        
+        return bandera;
+    }
+
+    /**
+     * Web service operation
+     * @param nombre
+     * @param apellido
+     * @param password
+     * @return
+     */
+    @WebMethod(operationName = "verificarChofer")
+    public boolean verificarChofer(@WebParam(name = "nombre") String nombre, @WebParam(name = "apellido") String apellido, @WebParam(name = "password") String password) {
+        //TODO write your implementation code here:
+        
+        /*Llamamos al método que verifica si existe el nodo con esa información*/
+        boolean bandera = chofer.existe(chofer.raiz, nombre, apellido, password);
         
         return bandera;
     }
