@@ -21,26 +21,8 @@
 	<!-- // Load Javascipt -->
 
 	<!-- Load stylesheets -->
-	<link type="text/css" rel="stylesheet" href="forms/css/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="login_x/css/style.css" />
 	<!-- // Load stylesheets -->
-	
-<script>
-
-
-	$(document).ready(function(){
- 
-	$("#submit1").hover(
-	function() {
-	$(this).animate({"opacity": "0"}, "slow");
-	},
-	function() {
-	$(this).animate({"opacity": "1"}, "slow");
-	});
- 	});
-
-
-</script>
 	
 </head>
 <body>
@@ -64,39 +46,68 @@
         <a href="crear_estacion_clave.jsp">Crear Estaciones Clave</a>
         <a class="current-demo" href="crear_ruta.jsp">Crear Ruta</a>
         <a href="crear_bus.jsp">Crear Bus</a>
+        <a href="reporteria.jsp">Reporteria</a>
     </nav>
+    <head>
+	<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Custom Login Form Styling with CSS3" />
+        <meta name="keywords" content="css3, login, form, custom, input, submit, button, html5, placeholder" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="js/modernizr.custom.63321.js"></script>
+	<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+    </head>
     
-    <div id="wrapper">
-    <div id="wrappertop"></div>
-
-    <div id="wrappermiddle">
-
-            <h2><center>Registro de Rutas</center></h2>
-            <br>
-            <div id="username_input">
-
-                    <div id="username_inputleft"></div>
-
-                    <div id="username_inputmiddle">
-                    <form>
-                            <input type="text" name="link" id="url" value="Nombre" onclick="this.value = ''">
-                            <img id="url_user" src="forms/images/user.png" alt="">
-                    </form>
-                    </div>
-
-                    <div id="username_inputright"></div>
-
-            </div>
-            <div id="wrappermiddle">
-                
-                <div id="submit">
-                        <form>
-                        <input type="image" src="forms/images/submit_hover.png" id="submit1" value="Registrar">
-                        <input type="image" src="forms/images/submit.png" id="submit2" value="Registrar">
-                        </form>
-                </div>
-            </div>
-            <div id="wrapperbottom"></div>
-	</div>
+    <div class="container">
+        <section class="main">
+            <form class="form-1">
+                <p class="field">
+                    <input type="text" name="nombre" placeholder="Nombre de la ruta">
+                    <i class="icon-user icon-large"></i>
+                </p>
+                <p class="field">
+                    <input type="text" name="estaciones" placeholder="Estaciones por las que pasa">
+                    <i class="icon-star icon-large"></i>
+                </p>
+                <p class="submit">
+                    <button type="submit" name="boton_ruta" value="continue"><i class="icon-arrow-right icon-large"></i></button>
+                </p>
+            </form>
+        </section>
+    </div>
+    <%-- start web service invocation --%><hr/>
+    <%
+    try {
+	
+        String flag = request.getParameter("boton_ruta");
+        
+        if("continue".equals(flag)) {
+            
+            java.lang.String nombre = request.getParameter("nombre");
+            java.lang.String estaciones = request.getParameter("estaciones");
+            
+            edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
+            edd.webserviceexterno.datos.Datos port = service.getDatosPort();
+            java.lang.String result = port.crearRuta(nombre, estaciones);
+            System.out.println("Result = " + result);
+            /*Javascript*/
+            %>
+                <script src="funciones.js"></script>
+                <script>
+                    rutaCorrecto();
+                </script>
+            <%
+            
+        }
+        
+    } catch (Exception ex) {
+	// TODO handle custom exceptions here
+    }
+    %>
+    <%-- end web service invocation --%><hr/>
 </body>
 </html>
+

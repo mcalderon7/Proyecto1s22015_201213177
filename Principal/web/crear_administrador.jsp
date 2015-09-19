@@ -8,8 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-
-
 	<!-- General meta information -->
 	<title>Registro de Administradores</title>
 	<meta charset="utf-8" />
@@ -23,10 +21,8 @@
 	<!-- // Load Javascipt -->
 
 	<!-- Load stylesheets -->
-        <!-- <link type="text/css" rel="stylesheet" href="forms/css/style.css" media="screen" /> -->
         <link rel="stylesheet" type="text/css" href="login_x/css/style.css" />
 	<!-- // Load stylesheets -->
-        
     </head>
 <body>
     
@@ -49,6 +45,7 @@
         <a href="crear_estacion_clave.jsp">Crear Estaciones Clave</a>
         <a href="crear_ruta.jsp">Crear Ruta</a>
         <a href="crear_bus.jsp">Crear Bus</a>
+        <a href="reporteria.jsp">Reporteria</a>
     </nav>
     
     <head>
@@ -93,9 +90,6 @@
             String correo_x = request.getParameter("login");
             String contraseña = request.getParameter("password");
             
-            System.out.println("esto es el correo: " + correo_x);
-            System.out.println("y esto es la contraseña: " + contraseña);
-            
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
             java.lang.String result = port.crearAdministrador(correo_x, contraseña);
@@ -107,7 +101,6 @@
                     adminCorrecto();
                 </script>
             <%
-            
         }
     } catch (Exception ex) {
 	// TODO handle custom exceptions here

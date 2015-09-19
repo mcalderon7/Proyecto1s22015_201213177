@@ -7,42 +7,23 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-        <head>
-	<!-- General meta information -->
-	<title>Registro de Estaciones Clave</title>
-	<meta charset="utf-8" />
-	<!-- // General meta information -->
-	
-	
-	<!-- Load Javascript -->
-	<script type="text/javascript" src="forms/js/jquery.js"></script>
-	<script type="text/javascript" src="forms/js/jquery.query-2.1.7.js"></script>
-	<script type="text/javascript" src="forms/js/rainbows.js"></script>
-	<!-- // Load Javascipt -->
+    <head>
+        <!-- General meta information -->
+        <title>Registro de Estaciones Clave</title>
+        <meta charset="utf-8" />
+        <!-- // General meta information -->
 
-	<!-- Load stylesheets -->
-	<link type="text/css" rel="stylesheet" href="forms/css/style.css" media="screen" />
+
+        <!-- Load Javascript -->
+        <script type="text/javascript" src="forms/js/jquery.js"></script>
+        <script type="text/javascript" src="forms/js/jquery.query-2.1.7.js"></script>
+        <script type="text/javascript" src="forms/js/rainbows.js"></script>
+        <!-- // Load Javascipt -->
+
+        <!-- Load stylesheets -->
         <link rel="stylesheet" type="text/css" href="login_x/css/style.css" />
-	<!-- // Load stylesheets -->
-	
-<script>
-
-
-	$(document).ready(function(){
- 
-	$("#submit1").hover(
-	function() {
-	$(this).animate({"opacity": "0"}, "slow");
-	},
-	function() {
-	$(this).animate({"opacity": "1"}, "slow");
-	});
- 	});
-
-
-</script>
-	
-</head>
+        <!-- // Load stylesheets -->
+    </head>
 <body>
     
     <!-- Codrops top bar -->
@@ -64,69 +45,72 @@
         <a class="current-demo" href="crear_estacion_clave.jsp">Crear Estaciones Clave</a>
         <a href="crear_ruta.jsp">Crear Ruta</a>
         <a href="crear_bus.jsp">Crear Bus</a>
+        <a href="reporteria.jsp">Reporteria</a>
     </nav>
+    <head>
+	<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Custom Login Form Styling with CSS3" />
+        <meta name="keywords" content="css3, login, form, custom, input, submit, button, html5, placeholder" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="js/modernizr.custom.63321.js"></script>
+	<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+    </head>
     
-    <div id="wrapper">
-    <div id="wrappertop"></div>
-
-    <div id="wrappermiddle">
-
-            <h2>Registro de Estaciones Clave</h2>
+    <div class="container">
+        <section class="main">
+            <form class="form-1">
+                <p class="field">
+                    <input type="text" name="identificador" placeholder="ID">
+                    <i class="icon-star icon-large"></i>
+                </p>
+                <p class="field">
+                    <input type="text" name="nombre" placeholder="Nombre de la estacion">
+                    <i class="icon-user icon-large"></i>
+                </p>
+                    <p class="field">
+                    <input type="password" name="password" placeholder="Contraseña">
+                    <i class="icon-lock icon-large"></i>
+                </p>
+                <p class="submit">
+                    <button type="submit" name="boton_clave" value="continue"><i class="icon-arrow-right icon-large"></i></button>
+                </p>
+            </form>
+        </section>
+    </div>
+    <%-- start web service invocation --%><hr/>
+    <%
+    try {
+	
+        String flag = request.getParameter("boton_clave");
+        
+        if("continue".equals(flag)) {
             
-            <div id="username_input">
-
-                    <div id="username_inputleft"></div>
-
-                    <div id="username_inputmiddle">
-                    <form>
-                            <input type="text" name="link" id="url" value="Nombre" onclick="this.value = ''">
-                            <img id="url_user" src="forms/images/user.png" alt="">
-                    </form>
-                    </div>
-
-                    <div id="username_inputright"></div>
-
-            </div>
-            <br><br><br><br>
-            <div id="username_input">
-
-                    <div id="username_inputleft"></div>
-
-                    <div id="username_inputmiddle">
-                    <form>
-                            <input type="text" name="link" id="url" value="Clave" onclick="this.value = ''">
-                            <img id="url_user" src="forms/images/key.png" alt="">
-                    </form>
-                    </div>
-
-                    <div id="username_inputright"></div>
-
-            </div>
-            <br>
-            <div id="wrappermiddle">
-                <div id="password_input">
-
-                        <div id="password_inputleft"></div>
-
-                        <div id="password_inputmiddle">
-                        <form>
-                                <input type="password" name="link" id="url" value="Password" onclick="this.value = ''">
-                                <img id="url_password" src="forms/images/passicon.png" alt="">
-                        </form>
-                        </div>
-
-                        <div id="password_inputright"></div>
-
-                </div>
-
-                <div id="submit">
-                        <form>
-                        <input type="image" src="forms/images/submit_hover.png" id="submit1" value="Registrar">
-                        <input type="image" src="forms/images/submit.png" id="submit2" value="Registrar">
-                        </form>
-                </div>
-            </div>
-            <div id="wrapperbottom"></div>
-	</div>
+            int idEstacionClave = Integer.parseInt(request.getParameter("identificador"));
+            java.lang.String nombre = request.getParameter("nombre");
+            java.lang.String password = request.getParameter("password");
+            
+            edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
+            edd.webserviceexterno.datos.Datos port = service.getDatosPort();
+            java.lang.String result = port.crearEstacionClave(idEstacionClave, nombre, password);
+            System.out.println("Result = "+result);
+            /*Javascript*/
+            %>
+                <script src="funciones.js"></script>
+                <script>
+                    claveCorrecto();
+                </script>
+            <%
+        }
+        
+    } catch (Exception ex) {
+	// TODO handle custom exceptions here
+    }
+    %>
+    <%-- end web service invocation --%><hr/>
 </body>
 </html>
+
