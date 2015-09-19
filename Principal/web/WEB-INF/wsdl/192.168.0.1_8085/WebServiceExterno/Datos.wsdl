@@ -4,35 +4,17 @@
 <xsd:import namespace="http://datos.webserviceexterno.edd/" schemaLocation="http://192.168.0.1:8085/WebServiceExterno/Datos?xsd=1" />
 </xsd:schema>
 </types>
-<message name="CrearBus">
-<part name="parameters" element="tns:CrearBus" />
-</message>
-<message name="CrearBusResponse">
-<part name="parameters" element="tns:CrearBusResponse" />
-</message>
 <message name="CrearRuta">
 <part name="parameters" element="tns:CrearRuta" />
 </message>
 <message name="CrearRutaResponse">
 <part name="parameters" element="tns:CrearRutaResponse" />
 </message>
-<message name="CrearEstacionClave">
-<part name="parameters" element="tns:CrearEstacionClave" />
-</message>
-<message name="CrearEstacionClaveResponse">
-<part name="parameters" element="tns:CrearEstacionClaveResponse" />
-</message>
 <message name="CrearEstacionGeneral">
 <part name="parameters" element="tns:CrearEstacionGeneral" />
 </message>
 <message name="CrearEstacionGeneralResponse">
 <part name="parameters" element="tns:CrearEstacionGeneralResponse" />
-</message>
-<message name="CrearChofer">
-<part name="parameters" element="tns:CrearChofer" />
-</message>
-<message name="CrearChoferResponse">
-<part name="parameters" element="tns:CrearChoferResponse" />
 </message>
 <message name="verificarAdministrador">
 <part name="parameters" element="tns:verificarAdministrador" />
@@ -52,11 +34,65 @@
 <message name="verificarEstacionGeneralResponse">
 <part name="parameters" element="tns:verificarEstacionGeneralResponse" />
 </message>
-<message name="verificarChofer">
-<part name="parameters" element="tns:verificarChofer" />
+<message name="reporteAdministrador">
+<part name="parameters" element="tns:reporteAdministrador" />
 </message>
-<message name="verificarChoferResponse">
-<part name="parameters" element="tns:verificarChoferResponse" />
+<message name="reporteAdministradorResponse">
+<part name="parameters" element="tns:reporteAdministradorResponse" />
+</message>
+<message name="reporteEstacionClave">
+<part name="parameters" element="tns:reporteEstacionClave" />
+</message>
+<message name="reporteEstacionClaveResponse">
+<part name="parameters" element="tns:reporteEstacionClaveResponse" />
+</message>
+<message name="reporteChofer">
+<part name="parameters" element="tns:reporteChofer" />
+</message>
+<message name="reporteChoferResponse">
+<part name="parameters" element="tns:reporteChoferResponse" />
+</message>
+<message name="CrearBus">
+<part name="parameters" element="tns:CrearBus" />
+</message>
+<message name="CrearBusResponse">
+<part name="parameters" element="tns:CrearBusResponse" />
+</message>
+<message name="CrearChofer">
+<part name="parameters" element="tns:CrearChofer" />
+</message>
+<message name="CrearChoferResponse">
+<part name="parameters" element="tns:CrearChoferResponse" />
+</message>
+<message name="reporteEstacionGeneral">
+<part name="parameters" element="tns:reporteEstacionGeneral" />
+</message>
+<message name="reporteEstacionGeneralResponse">
+<part name="parameters" element="tns:reporteEstacionGeneralResponse" />
+</message>
+<message name="reporteRuta">
+<part name="parameters" element="tns:reporteRuta" />
+</message>
+<message name="reporteRutaResponse">
+<part name="parameters" element="tns:reporteRutaResponse" />
+</message>
+<message name="reporteBus">
+<part name="parameters" element="tns:reporteBus" />
+</message>
+<message name="reporteBusResponse">
+<part name="parameters" element="tns:reporteBusResponse" />
+</message>
+<message name="imageToByteArray">
+<part name="parameters" element="tns:imageToByteArray" />
+</message>
+<message name="imageToByteArrayResponse">
+<part name="parameters" element="tns:imageToByteArrayResponse" />
+</message>
+<message name="CrearEstacionClave">
+<part name="parameters" element="tns:CrearEstacionClave" />
+</message>
+<message name="CrearEstacionClaveResponse">
+<part name="parameters" element="tns:CrearEstacionClaveResponse" />
 </message>
 <message name="CrearAdministrador">
 <part name="parameters" element="tns:CrearAdministrador" />
@@ -64,26 +100,20 @@
 <message name="CrearAdministradorResponse">
 <part name="parameters" element="tns:CrearAdministradorResponse" />
 </message>
+<message name="verificarChofer">
+<part name="parameters" element="tns:verificarChofer" />
+</message>
+<message name="verificarChoferResponse">
+<part name="parameters" element="tns:verificarChoferResponse" />
+</message>
 <portType name="Datos">
-<operation name="CrearBus">
-<input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearBusRequest" message="tns:CrearBus" />
-<output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearBusResponse" message="tns:CrearBusResponse" />
-</operation>
 <operation name="CrearRuta">
 <input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearRutaRequest" message="tns:CrearRuta" />
 <output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearRutaResponse" message="tns:CrearRutaResponse" />
 </operation>
-<operation name="CrearEstacionClave">
-<input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearEstacionClaveRequest" message="tns:CrearEstacionClave" />
-<output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearEstacionClaveResponse" message="tns:CrearEstacionClaveResponse" />
-</operation>
 <operation name="CrearEstacionGeneral">
 <input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearEstacionGeneralRequest" message="tns:CrearEstacionGeneral" />
 <output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearEstacionGeneralResponse" message="tns:CrearEstacionGeneralResponse" />
-</operation>
-<operation name="CrearChofer">
-<input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearChoferRequest" message="tns:CrearChofer" />
-<output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearChoferResponse" message="tns:CrearChoferResponse" />
 </operation>
 <operation name="verificarAdministrador">
 <input wsam:Action="http://datos.webserviceexterno.edd/Datos/verificarAdministradorRequest" message="tns:verificarAdministrador" />
@@ -97,26 +127,57 @@
 <input wsam:Action="http://datos.webserviceexterno.edd/Datos/verificarEstacionGeneralRequest" message="tns:verificarEstacionGeneral" />
 <output wsam:Action="http://datos.webserviceexterno.edd/Datos/verificarEstacionGeneralResponse" message="tns:verificarEstacionGeneralResponse" />
 </operation>
-<operation name="verificarChofer">
-<input wsam:Action="http://datos.webserviceexterno.edd/Datos/verificarChoferRequest" message="tns:verificarChofer" />
-<output wsam:Action="http://datos.webserviceexterno.edd/Datos/verificarChoferResponse" message="tns:verificarChoferResponse" />
+<operation name="reporteAdministrador">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteAdministradorRequest" message="tns:reporteAdministrador" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteAdministradorResponse" message="tns:reporteAdministradorResponse" />
+</operation>
+<operation name="reporteEstacionClave">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteEstacionClaveRequest" message="tns:reporteEstacionClave" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteEstacionClaveResponse" message="tns:reporteEstacionClaveResponse" />
+</operation>
+<operation name="reporteChofer">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteChoferRequest" message="tns:reporteChofer" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteChoferResponse" message="tns:reporteChoferResponse" />
+</operation>
+<operation name="CrearBus">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearBusRequest" message="tns:CrearBus" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearBusResponse" message="tns:CrearBusResponse" />
+</operation>
+<operation name="CrearChofer">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearChoferRequest" message="tns:CrearChofer" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearChoferResponse" message="tns:CrearChoferResponse" />
+</operation>
+<operation name="reporteEstacionGeneral">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteEstacionGeneralRequest" message="tns:reporteEstacionGeneral" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteEstacionGeneralResponse" message="tns:reporteEstacionGeneralResponse" />
+</operation>
+<operation name="reporteRuta">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteRutaRequest" message="tns:reporteRuta" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteRutaResponse" message="tns:reporteRutaResponse" />
+</operation>
+<operation name="reporteBus">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteBusRequest" message="tns:reporteBus" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/reporteBusResponse" message="tns:reporteBusResponse" />
+</operation>
+<operation name="imageToByteArray">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/imageToByteArrayRequest" message="tns:imageToByteArray" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/imageToByteArrayResponse" message="tns:imageToByteArrayResponse" />
+</operation>
+<operation name="CrearEstacionClave">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearEstacionClaveRequest" message="tns:CrearEstacionClave" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearEstacionClaveResponse" message="tns:CrearEstacionClaveResponse" />
 </operation>
 <operation name="CrearAdministrador">
 <input wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearAdministradorRequest" message="tns:CrearAdministrador" />
 <output wsam:Action="http://datos.webserviceexterno.edd/Datos/CrearAdministradorResponse" message="tns:CrearAdministradorResponse" />
 </operation>
+<operation name="verificarChofer">
+<input wsam:Action="http://datos.webserviceexterno.edd/Datos/verificarChoferRequest" message="tns:verificarChofer" />
+<output wsam:Action="http://datos.webserviceexterno.edd/Datos/verificarChoferResponse" message="tns:verificarChoferResponse" />
+</operation>
 </portType>
 <binding name="DatosPortBinding" type="tns:Datos">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
-<operation name="CrearBus">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-<output>
-<soap:body use="literal" />
-</output>
-</operation>
 <operation name="CrearRuta">
 <soap:operation soapAction="" />
 <input>
@@ -126,25 +187,7 @@
 <soap:body use="literal" />
 </output>
 </operation>
-<operation name="CrearEstacionClave">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-<output>
-<soap:body use="literal" />
-</output>
-</operation>
 <operation name="CrearEstacionGeneral">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" />
-</input>
-<output>
-<soap:body use="literal" />
-</output>
-</operation>
-<operation name="CrearChofer">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />
@@ -180,7 +223,88 @@
 <soap:body use="literal" />
 </output>
 </operation>
-<operation name="verificarChofer">
+<operation name="reporteAdministrador">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="reporteEstacionClave">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="reporteChofer">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="CrearBus">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="CrearChofer">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="reporteEstacionGeneral">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="reporteRuta">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="reporteBus">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="imageToByteArray">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="CrearEstacionClave">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />
@@ -190,6 +314,15 @@
 </output>
 </operation>
 <operation name="CrearAdministrador">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="verificarChofer">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" />
