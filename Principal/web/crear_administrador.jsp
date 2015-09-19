@@ -23,28 +23,11 @@
 	<!-- // Load Javascipt -->
 
 	<!-- Load stylesheets -->
-	<link type="text/css" rel="stylesheet" href="forms/css/style.css" media="screen" />
+        <!-- <link type="text/css" rel="stylesheet" href="forms/css/style.css" media="screen" /> -->
         <link rel="stylesheet" type="text/css" href="login_x/css/style.css" />
 	<!-- // Load stylesheets -->
-	
-<script>
-
-
-	$(document).ready(function(){
- 
-	$("#submit1").hover(
-	function() {
-	$(this).animate({"opacity": "0"}, "slow");
-	},
-	function() {
-	$(this).animate({"opacity": "1"}, "slow");
-	});
- 	});
-
-
-</script>
-	
-</head>
+        
+    </head>
 <body>
     
     <!-- Codrops top bar -->
@@ -56,8 +39,8 @@
         </span>
     </div>
     <!--/ Codrops top bar -->
-    
-    <br><br><header><h1><b><center><font size="8">Bienvenido <strong>Administrador!</strong></font></center></b></h1></header><br><br>
+    <input type="hidden" name="submitType">
+    <br><br><header><h1><center><font size="8">Bienvenido, <strong>Administrador!</strong></font></center></h1></header><br><br>
     
     <nav class="codrops-demos">
         <a class="current-demo" href="crear_administrador.jsp">Crear Administrador</a>
@@ -68,50 +51,66 @@
         <a href="crear_bus.jsp">Crear Bus</a>
     </nav>
     
-    <div id="wrapper">
-    <div id="wrappertop"></div>
-
-    <div id="wrappermiddle">
-
-            <h2>Registro de Administradores</h2>
-            
-            <div id="username_input">
-
-                    <div id="username_inputleft"></div>
-
-                    <div id="username_inputmiddle">
-                    <form>
-                            <input type="text" name="link" id="url" value="Correo" onclick="this.value = ''">
-                            <img id="url_user" src="forms/images/mailicon.png" alt="">
-                    </form>
-                    </div>
-
-                    <div id="username_inputright"></div>
-
-            </div>
-
-            <div id="password_input">
-
-                    <div id="password_inputleft"></div>
-
-                    <div id="password_inputmiddle">
-                    <form>
-                            <input type="password" name="link" id="url" value="Password" onclick="this.value = ''">
-                            <img id="url_password" src="forms/images/passicon.png" alt="">
-                    </form>
-                    </div>
-
-                    <div id="password_inputright"></div>
-
-            </div>
-            
-            <div id="submit">
-                <form>
-                <input type="image" src="forms/images/submit_hover.png" id="submit1" value="Registrarse">
-                <input type="image" src="forms/images/submit.png" id="submit2" value="Registrarse">
-                </form>
-            </div>
-	</div>
-    <div id="wrapperbottom"></div>
+    <head>
+	<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Custom Login Form Styling with CSS3" />
+        <meta name="keywords" content="css3, login, form, custom, input, submit, button, html5, placeholder" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="js/modernizr.custom.63321.js"></script>
+	<!--[if lte IE 7]><style>.main{display:none;} .support-note .note-ie{display:block;}</style><![endif]-->
+    </head>
+    
+    <div class="container">
+        <section class="main">
+            <form class="form-1">
+                <p class="field">
+                    <input type="text" name="login" placeholder="Correo">
+                    <i class="icon-user icon-large"></i>
+                </p>
+                    <p class="field">
+                    <input type="password" name="password" placeholder="Contraseña">
+                    <i class="icon-lock icon-large"></i>
+                </p>
+                <p class="submit">
+                    <button type="submit" name="button" value="continue"><i class="icon-arrow-right icon-large"></i></button>
+                </p>
+            </form>
+        </section>
+    </div>
 </body>
 </html>
+<%-- start web service invocation --%>
+    <%
+    try {
+	
+        String flag = request.getParameter("button");
+        
+        if("continue".equals(flag)) {
+            String correo_x = request.getParameter("login");
+            String contraseña = request.getParameter("password");
+            
+            System.out.println("esto es el correo: " + correo_x);
+            System.out.println("y esto es la contraseña: " + contraseña);
+            
+            edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
+            edd.webserviceexterno.datos.Datos port = service.getDatosPort();
+            java.lang.String result = port.crearAdministrador(correo_x, contraseña);
+            System.out.println("Result = " + result);
+            /*Javascript*/
+            %>
+                <script src="funciones.js"></script>
+                <script>
+                    adminCorrecto();
+                </script>
+            <%
+            
+        }
+    } catch (Exception ex) {
+	// TODO handle custom exceptions here
+    }
+    %>
+    <%-- end web service invocation --%>

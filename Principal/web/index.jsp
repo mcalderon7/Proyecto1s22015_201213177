@@ -4,11 +4,20 @@
     Author     : Marvin
 --%>
 
+<%@page import="java.nio.file.Paths"%>
+<%@page import="java.nio.file.Files"%>
+<%@page import="java.nio.file.Files"%>
+<%@page import="java.nio.charset.StandardCharsets"%>
+<%@page import="java.nio.charset.StandardCharsets"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.BufferedReader"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="javax.script.Invocable"%>
 <%@page import="javax.script.ScriptEngine"%>
 <%@page import="javax.script.ScriptEngineManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html method="POST">
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Flujo de Transmetro</title>
@@ -39,11 +48,11 @@
                         <h1>Login Administradores</h1>
                         <p>
                             <label for="login">Correo</label>
-                            <input type="text" name="login" id="login" placeholder="Correo" required>
+                            <input type="text" name="login" placeholder="Correo" required>
                         </p>
                         <p>
                             <label for="password">Contraseña</label>
-                            <input type="password" name="password" id="contrasena" placeholder="Contraseña" required> 
+                            <input type="password" name="password" placeholder="Contraseña" required> 
                         </p>
 
                         <p>
@@ -52,10 +61,13 @@
                     </form>​
             </section>
        </div>
-    <%-- start web service invocation --%>
+    </body>
+</html>
+
+<%-- start web service invocation --%>
     <%
     try {
-	
+        
         String flag = request.getParameter("submit");
         
         if("Continuar".equals(flag)) {
@@ -63,36 +75,41 @@
             String correo_x = request.getParameter("login");
             String contraseña = request.getParameter("password");
             
-            /*Código de JavaScript*/
-            ScriptEngineManager manager = new ScriptEngineManager();
-            ScriptEngine engine = manager.getEngineByName("JavaScript");
-            
-            String script1 = (String)"function validLogin(){alert(\"Usuario incorrecto\");}";
-            String script2 = (String)"document.forms[0].action = \"crear_administrador.jsp\"; document.forms[0].method = \"post\"; document.forms[0].submit();";
-            String script3 = (String)"document.forms[0].action = \"index.jsp\"; document.forms[0].method = \"post\"; document.forms[0].submit();";
-            
-            if(correo_x == "admin" && contraseña == "admin") {
-                engine.eval(script2);
+            if("admin".equals(correo_x) && "admin".equals(contraseña)) {
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        redirectCorrect();
+                    </script>
+                <%
             }else {
                 edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
                 edd.webserviceexterno.datos.Datos port = service.getDatosPort();
-                // TODO process result here
-                boolean result = port.verificarAdministrador(correo_x, contraseña);
+                Boolean result = port.verificarAdministrador(correo_x, contraseña);
+                Boolean aux = true;
                 
-                if(result == true){
-                    engine.eval(script2);
+                if(result.equals(aux)){
+                    %>
+                        <script src="funciones.js"></script>
+                        <script>
+                            redirectCorrect();
+                        </script>
+                    <%
                 }else {
-                    engine.eval(script1);
-                    engine.eval(script3);
+                    %>
+                        <script src="funciones.js"></script>
+                        <script>
+                            validLogin();
+                            redirectError();
+                        </script>
+                    <%
                 }
-                
+
             }
         }
-        
+
     } catch (Exception ex) {
-	// TODO handle custom exceptions here
+        // TODO handle custom exceptions here
     }
     %>
     <%-- end web service invocation --%>
-    </body>
-</html>
