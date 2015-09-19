@@ -372,8 +372,12 @@ public class ArbolAVL_Clave {
                 enlaceGraph += aux + " -> nodo" + idNodo + System.getProperty("line.separator");
                 graficar((NodoAVL_Clave)r.subArbolDerecho());
             }
+            
+            idNodo = 0;
             return codigoGraph + enlaceGraph;
         }else {
+            
+            idNodo = 0;
             return codigoGraph + enlaceGraph;
         }
     }
@@ -384,7 +388,7 @@ public class ArbolAVL_Clave {
         contenido += "}";
         
         File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_estacion_clave.txt");
-        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        FileWriter fw = new FileWriter(file.getAbsoluteFile(), false);
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(contenido);
         }

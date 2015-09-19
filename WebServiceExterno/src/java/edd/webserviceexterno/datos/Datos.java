@@ -297,8 +297,7 @@ public class Datos {
     /**
      * Web service operation
      * @param tipo
-     * @return 
-     * @throws java.io.FileNotFoundException 
+     * @return
      */
     @WebMethod(operationName = "imageToByteArray")
     public byte[] imageToByteArray(@WebParam(name = "tipo") String tipo) {
@@ -306,25 +305,18 @@ public class Datos {
         byte[] bytes = null;
         String path = "";
         
-        if(null != tipo) switch (tipo) {
-            case "admin":
-                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_admin.jpg";
-                break;
-            case "chofer":
-                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_chofer.jpg";
-                break;
-            case "estacion_clave":
-                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_estacion_clave.jpg";
-                break;
-            case "estacion_general":
-                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_general.jpg";
-                break;
-            case "bus":
-                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.jpg";
-                break;
-            case "ruta":
-                path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_ruta.jpg";
-                break;
+        if("admin".equals(tipo)) {
+            path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_admin.jpg";
+        }else if("chofer".equals(tipo)) {
+            path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_chofer.jpg";
+        }else if("estacion_clave".equals(tipo)) {
+            path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_estacion_clave.jpg";
+        }else if("estacion_general".equals(tipo)) {
+            path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_general.jpg";
+        }else if("bus".equals(tipo)) {
+            path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.jpg";
+        }else if("ruta".equals(tipo)) {
+            path = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_ruta.jpg";
         }
         
         File file = new File(path);

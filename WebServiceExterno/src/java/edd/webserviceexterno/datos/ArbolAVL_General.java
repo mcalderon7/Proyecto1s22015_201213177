@@ -372,8 +372,11 @@ public class ArbolAVL_General {
                 enlaceGraph += aux + " -> nodo" + idNodo + System.getProperty("line.separator");
                 graficar((NodoAVL_General)r.subArbolDerecho());
             }
+            
+            idNodo = 0;
             return codigoGraph + enlaceGraph;
         }else {
+            idNodo = 0;
             return codigoGraph + enlaceGraph;
         }
     }
@@ -384,7 +387,7 @@ public class ArbolAVL_General {
         contenido += "}";
         
         File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_general.txt");
-        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        FileWriter fw = new FileWriter(file.getAbsoluteFile(), false);
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(contenido);
         }

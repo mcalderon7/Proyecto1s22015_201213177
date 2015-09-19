@@ -123,6 +123,7 @@ public class Lista_Buses {
             aux = aux.siguiente;
         }
         
+        idNodo = 0;
         return codigoGraph + enlaceGraph;
     }
     
@@ -132,7 +133,7 @@ public class Lista_Buses {
         contenido += "}";
         
         File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_buses.txt");
-        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        FileWriter fw = new FileWriter(file.getAbsoluteFile(), false);
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(contenido);
         }

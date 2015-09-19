@@ -121,6 +121,7 @@ public class Lista_Ruta {
             aux = aux.siguiente;
         }
         
+        idNodo = 0;
         return codigoGraph + enlaceGraph;
     }
     
@@ -130,7 +131,7 @@ public class Lista_Ruta {
         contenido += "}";
         
         File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_ruta.txt");
-        FileWriter fw = new FileWriter(file.getAbsoluteFile());
+        FileWriter fw = new FileWriter(file.getAbsoluteFile(), false);
         try (BufferedWriter bw = new BufferedWriter(fw)) {
             bw.write(contenido);
         }
