@@ -1,11 +1,8 @@
 package edd.webserviceexterno.datos;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
 
 /**
@@ -14,6 +11,7 @@ import java.util.Stack;
  */
 public class ArbolAVL_Admin {
     
+    boolean bandera_creacion;
     static Boolean flag = false;
     static Stack<String> pila;
     static String codigoGraph = "";
@@ -123,6 +121,7 @@ public class ArbolAVL_Admin {
     
     private NodoAVL_Admin insertarAVL(NodoAVL_Admin raiz, Comparador dt, Logical h, int x, String correo, String contraseña) {
         NodoAVL_Admin n1;
+        bandera_creacion = false;
         
         if(raiz == null) {
             raiz = new NodoAVL_Admin(dt, correo, contraseña);
@@ -180,6 +179,7 @@ public class ArbolAVL_Admin {
             }
             
         }else {
+            bandera_creacion = true;
             System.out.println("Clave repetida");
         }
         
@@ -201,24 +201,23 @@ public class ArbolAVL_Admin {
         }
     }
     
-    public boolean existe(NodoAVL_Admin nodo, String correo, String password) {
+    public boolean existe(NodoAVL_Admin nodo, int key, String password) {
         
-        if(nodo != null) {
-            
-            if(nodo.correo.equals(correo) && nodo.contraseña.equals(password)) {
-                System.out.println("SE ENCONTRO EL NODO!");
-                return true;
-            }else {
-                if((NodoAVL_Admin)nodo.subArbolIzquierdo() != null) {
-                    existe((NodoAVL_Admin)nodo.subArbolIzquierdo(), correo, password);
+        while (nodo != null) {
+            if (key == nodo.key) {
+                if(nodo.contraseña == null ? password == null : nodo.contraseña.equals(password)) {
+                    System.out.println("El nodo ha sido encontrado!");
+                    return true;
                 }
-                if((NodoAVL_Admin)nodo.subArbolDerecho() != null) {
-                    existe((NodoAVL_Admin)nodo.subArbolDerecho(), correo, password);
-                }
+            } else if (key > nodo.key) {
+                nodo = (NodoAVL_Admin)nodo.subArbolDerecho();
+            } else {
+                nodo = (NodoAVL_Admin)nodo.subArbolIzquierdo();
             }
         }
-        System.out.println("NO SE ENCONTRO EL NODO!");
+        
         return false;
+        
     }
     
     static int mayor(int x, int y) {

@@ -6,6 +6,7 @@ package edd.webserviceexterno.datos;
  */
 public class Nodo {
     
+    protected int key;
     protected String correo;
     protected String contraseña;
     protected String valorString;
@@ -15,6 +16,7 @@ public class Nodo {
     
     /*Administrador*/
     public Nodo(Object valor, String mail, String password) {
+        key = (Integer) valor;
         dato = valor;
         correo = mail;
         contraseña = password;

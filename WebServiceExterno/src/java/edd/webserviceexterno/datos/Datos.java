@@ -154,9 +154,9 @@ public class Datos {
     @WebMethod(operationName = "verificarAdministrador")
     public boolean verificarAdministrador(@WebParam(name = "correo") String correo, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
-        
+        int valor = (correo.hashCode() > 0) ? correo.hashCode() : correo.hashCode() * -1;
         /*Llamamos al método que verifica si existe el nodo con esa información*/
-        boolean bandera = admin.existe(admin.raiz, correo, password);
+        boolean bandera = admin.existe(admin.raiz, valor, password);
         
         return bandera;
     }
@@ -347,6 +347,56 @@ public class Datos {
         }
  
         return bytes;
+    }
+
+    /**
+     * Web service operation
+     * @param tipo
+     * @return 
+     */
+    @WebMethod(operationName = "verificacion")
+    public boolean verificacion(@WebParam(name = "tipo") String tipo) {
+        //TODO write your implementation code here:
+        boolean flag = false;
+        
+        if("admin".equals(tipo)) {
+            flag = admin.bandera_creacion;
+        }else if("chofer".equals(tipo)) {
+            flag = chofer.bandera_creacion;
+        }else if("estacion_clave".equals(tipo)) {
+            flag = estacion_clave.bandera_creacion;
+        }else if("estacion_general".equals(tipo)) {
+            flag = estacion_general.bandera_creacion;
+        }
+        
+        return flag;
+        
+    }
+
+    /**
+     * Web service operation
+     * @param identificador
+     * @return 
+     */
+    @WebMethod(operationName = "verifyBus")
+    public boolean verifyBus(@WebParam(name = "identificador") int identificador) {
+        //TODO write your implementation code here:
+        boolean flag = bus.existe(identificador);
+        
+        return flag;
+    }
+
+    /**
+     * Web service operation
+     * @param identificador
+     * @return 
+     */
+    @WebMethod(operationName = "verifyRuta")
+    public boolean verifyRuta(@WebParam(name = "identificador") int identificador) {
+        //TODO write your implementation code here:
+        boolean flag = ruta.existe(identificador);
+        
+        return flag;
     }
 
 

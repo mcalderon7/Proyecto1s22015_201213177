@@ -14,6 +14,7 @@ import java.util.Stack;
  */
 public class ArbolAVL_General {
     
+    boolean bandera_creacion;
     static Boolean flag = false;
     static Stack<String> pila;
     static String codigoGraph = "";
@@ -122,6 +123,7 @@ public class ArbolAVL_General {
     }
     
     private NodoAVL_General insertarAVL(NodoAVL_General raiz, Comparador dt, Logical h, int x, String nombre, String clave, String contraseña) {
+        bandera_creacion = false;
         NodoAVL_General n1;
         
         if(raiz == null) {
@@ -180,6 +182,7 @@ public class ArbolAVL_General {
             }
             
         }else {
+            bandera_creacion = true;
             System.out.println("Clave repetida");
         }
         
