@@ -40,15 +40,14 @@
     <br><br><header><h1><b><center><font size="8">Bienvenido <strong>Administrador!</strong></font></center></b></h1></header><br><br>
     
     <nav class="codrops-demos">
-        <a href="crear_administrador.jsp">Crear Administrador</a>
-        <a href="crear_chofer.jsp">Crear Choferes</a>
-        <a class="current-demo" href="crear_estacion_general.jsp">Crear Estaciones Generales</a>
-        <a href="crear_estacion_clave.jsp">Crear Estaciones Clave</a>
-        <a href="crear_ruta.jsp">Crear Ruta</a>
-        <a href="crear_bus.jsp">Crear Bus</a>
-        <a href="reporteria.jsp">Reporteria</a>
-        <a href="asignacionBus.jsp">Asignacion de Buses</a>
+        <a href="eliminar_administrador.jsp">Eliminar Administrador</a>
+        <a href="eliminar_chofer.jsp">Eliminar Choferes</a>
+        <a class="current-demo" href="eliminar_estacion_general.jsp">Eliminar Estaciones Generales</a>
+        <a href="eliminar_estacion_clave.jsp">Eliminar Estaciones Clave</a>
+        <a href="eliminar_ruta.jsp">Eliminar Ruta</a>
+        <a href="eliminar_bus.jsp">Eliminar Bus</a>
     </nav>
+    
     <head>
 	<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 

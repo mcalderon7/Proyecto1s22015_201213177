@@ -40,11 +40,11 @@
     
     <nav class="codrops-demos">
         <a class="current-demo" href="eliminar_administrador.jsp">Eliminar Administrador</a>
-        <a href="eliminar.jsp">Eliminar Choferes</a>
-        <a href="eliminar_estacion_general.jsp">Crear Estaciones Generales</a>
-        <a href="eliminar_estacion_clave.jsp">Crear Estaciones Clave</a>
-        <a href="eliminar_ruta.jsp">Crear Ruta</a>
-        <a href="eliminar_bus.jsp">Crear Bus</a>
+        <a href="eliminar_chofer.jsp">Eliminar Choferes</a>
+        <a href="eliminar_estacion_general.jsp">Eliminar Estaciones Generales</a>
+        <a href="eliminar_estacion_clave.jsp">Eliminar Estaciones Clave</a>
+        <a href="eliminar_ruta.jsp">Eliminar Ruta</a>
+        <a href="eliminar_bus.jsp">Eliminar Bus</a>
     </nav>
     
     <head>
