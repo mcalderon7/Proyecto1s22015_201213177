@@ -121,21 +121,30 @@ public class Lista_Ruta {
             aux = aux.siguiente;
         }
         
-        idNodo = 0;
         return codigoGraph + enlaceGraph;
     }
     
     static void crearArchivoGraphviz(String contenido) throws IOException {
+        
+        idNodo = 0;
         
         /*Termino de escribir el contenido del archivo de graphviz*/
         contenido += "}";
         
         File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\lista_ruta.txt");
         FileWriter fw = new FileWriter(file.getAbsoluteFile(), false);
-        try (BufferedWriter bw = new BufferedWriter(fw)) {
-            bw.write(contenido);
+        
+        if(file.exists() && !file.isDirectory()) {
+            file.delete();
+            System.out.println(file.getName() + " is deleted!");
+            fw.write(contenido);
+            fw.close();
+            System.out.println("Done writting Graphviz file.");
+        }else {
+            fw.write(contenido);
+            fw.close();
+            System.out.println("Done writting Graphviz file.");
         }
-        System.out.println("Done writting Graphviz [lista_buses] file.");
         
         try {
             String dotPath = "C:\\Archivos de programa\\Graphviz2.38\\bin\\dot.exe";
@@ -154,7 +163,16 @@ public class Lista_Ruta {
             Runtime rt = Runtime.getRuntime();
             rt.exec(cmd);
             
-            System.out.println("Done making Graphviz [lista_buses] image.");
+            System.out.println("Done making Graphviz [lista_ruta] image.");
+            
+            File file_x = new File(fileOutputPath);
+            while (!file_x.exists()) {
+                try { 
+                    Thread.sleep(100);
+                } catch (InterruptedException ie) { 
+                    /* safe to ignore */
+                }
+            }
             
         } catch(IOException ex) {
         

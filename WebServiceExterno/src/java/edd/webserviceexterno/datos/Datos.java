@@ -335,6 +335,7 @@ public class Datos {
                     System.out.println("read " + readNum + " bytes,");
                 }
                 
+                System.out.println("Read process has finish.");
                 bytes = bos.toByteArray();
                 
             } catch (IOException ex) {
