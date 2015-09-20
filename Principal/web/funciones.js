@@ -26,6 +26,10 @@ function rutaCorrecto() {
     alert("Ruta creada con éxito!");
 }
 
+function lleneCampos() {
+    alert("Favor de llenar todos los campos!");
+}
+
 function redirectCorrect() {
     document.forms[0].action = "crear_administrador.jsp";
     document.forms[0].method = "post";

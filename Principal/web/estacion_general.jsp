@@ -8,11 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript">
-            function validLogin(){
-                alert("Usuario incorrecto");
-            }
-        </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Flujo de Transmetro -- Estacion General</title>
         <link rel="stylesheet" type="text/css" href="login/css/style.css" />
@@ -50,10 +45,59 @@
                         </p>
 
                         <p>
-                            <input type="submit" name="submit" value="Continuar" onclick="validLogin();">
+                            <input type="submit" name="submit_EG" value="Continuar" onclick="validLogin();">
                         </p>       
                     </form>​
             </section>
        </div>
     </body>
 </html>
+<%-- start web service invocation --%>
+    <%
+    try {
+        
+        String flag = request.getParameter("submit_EG");
+        
+        if("Continuar".equals(flag)) {
+            
+            int id = Integer.parseInt(request.getParameter("login"));
+            String contraseña = request.getParameter("password");
+            
+            if("".equals(id) || "".equals(contraseña)) {
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        lleneCampos();
+                    </script>
+                <%
+            }else {
+                edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
+                edd.webserviceexterno.datos.Datos port = service.getDatosPort();
+                Boolean result = port.verificarEstacionGeneral(id, contraseña);
+                Boolean aux = true;
+                
+                if(result.equals(aux)){
+                    %>
+                        <script src="funciones.js"></script>
+                        <script>
+                            redirectCorrect();
+                        </script>
+                    <%
+                }else {
+                    %>
+                        <script src="funciones.js"></script>
+                        <script>
+                            validLogin();
+                            redirectError();
+                        </script>
+                    <%
+                }
+
+            }
+        }
+
+    } catch (Exception ex) {
+        // TODO handle custom exceptions here
+    }
+    %>
+    <%-- end web service invocation --%>

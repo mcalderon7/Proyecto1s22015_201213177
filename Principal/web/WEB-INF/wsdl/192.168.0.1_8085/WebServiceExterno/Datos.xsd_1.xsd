@@ -151,8 +151,7 @@
 
 <xs:complexType name="verificarChofer">
 <xs:sequence>
-<xs:element name="nombre" type="xs:string" minOccurs="0" />
-<xs:element name="apellido" type="xs:string" minOccurs="0" />
+<xs:element name="key" type="xs:int" />
 <xs:element name="password" type="xs:string" minOccurs="0" />
 </xs:sequence>
 </xs:complexType>
@@ -245,7 +244,7 @@
 
 <xs:complexType name="verificarEstacionClave">
 <xs:sequence>
-<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="key" type="xs:int" />
 <xs:element name="password" type="xs:string" minOccurs="0" />
 </xs:sequence>
 </xs:complexType>
@@ -271,7 +270,7 @@
 
 <xs:complexType name="verificarEstacionGeneral">
 <xs:sequence>
-<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="key" type="xs:int" />
 <xs:element name="password" type="xs:string" minOccurs="0" />
 </xs:sequence>
 </xs:complexType>

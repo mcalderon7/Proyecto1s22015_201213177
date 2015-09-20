@@ -184,6 +184,10 @@
                 System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 
+                %>
+                    <br><center><img src="diagramas/diagrama_chofer.jpg"/></center>
+                <%
+                
             }else if("AVL Estacion Clave".equals(flag)) {
                 tipo = "estacion_clave";
                 port.reporteEstacionClave();
@@ -213,6 +217,10 @@
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
+                %>
+                    <br><center><img src="diagramas/diagrama_estacion_clave.jpg"/></center>
+                <%
                 
             }else if("AVL Estacion General".equals(flag)) {
                 tipo = "estacion_general";
@@ -244,6 +252,10 @@
                 System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 
+                %>
+                    <br><center><img src="diagramas/diagrama_estacion_general.jpg"/></center>
+                <%
+                
             }else if("Lista Buses".equals(flag)) {
                 tipo = "bus";
                 port.reporteBus();
@@ -274,6 +286,10 @@
                 System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 
+                %>
+                    <br><center><img src="diagramas/diagrama_bus.jpg"/></center>
+                <%
+                
             }else if("Lista Ruta".equals(flag)) {
                 tipo = "ruta";
                 port.reporteRuta();
@@ -303,6 +319,10 @@
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
+                %>
+                    <br><center><img src="diagramas/diagrama_ruta.jpg"/></center>
+                <%
                 
             }
             
