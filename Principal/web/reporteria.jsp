@@ -17,6 +17,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
     <head>
 	<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -111,9 +112,6 @@
     try {
 	
         String flag = request.getParameter("submit_hit");
-        System.out.println("***********************************************************");
-        System.out.println("IMPRIMIENDO EL FLAG ---->  " + flag);
-        System.out.println("***********************************************************");
         
         if(flag != null) {
             
@@ -122,9 +120,10 @@
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
             
             if("AVL Administrador".equals(flag)) {
-                tipo = "admin";
                 port.reporteAdministrador();
+                tipo = "admin";
                 byte[] result = port.imageToByteArray(tipo);
+                System.out.println(result);
 
                 /*BYTE ARRAY TO IMAGE FILE*/
 
@@ -150,6 +149,10 @@
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
                 System.out.println("Se ha creado la imagen en la ruta: " + imageFile.getPath());
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
+                
+                %>
+                    <br><center><img src="diagramas/diagrama_admin.jpg"/></center>
+                <%
                 
             }else if("AVL Chofer".equals(flag)) {
                 tipo = "chofer";

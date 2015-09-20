@@ -2,6 +2,10 @@ function validLogin() {
     alert("Usuario incorrecto!");
 }
 
+function mensajeCreacion() {
+    alert("Ese usuario ya se encuentra registrado!");
+}
+
 function adminCorrecto() {
     alert("Administrador creado con éxito!");
 }

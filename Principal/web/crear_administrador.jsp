@@ -92,15 +92,29 @@
             
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
-            java.lang.String result = port.crearAdministrador(correo_x, contraseña);
-            System.out.println("Result = " + result);
-            /*Javascript*/
-            %>
-                <script src="funciones.js"></script>
-                <script>
-                    adminCorrecto();
-                </script>
-            <%
+            
+            Boolean resultado = port.verificarAdministrador(correo_x, contraseña);
+            Boolean auxiliar = true;
+            
+            if(auxiliar.equals(resultado)) {
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        mensajeCreacion();
+                    </script>
+                <%
+            }else {
+                java.lang.String result = port.crearAdministrador(correo_x, contraseña);
+                System.out.println("Result = " + result);
+                /*Javascript*/
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        adminCorrecto();
+                    </script>
+                <%
+            }
+            
         }
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
