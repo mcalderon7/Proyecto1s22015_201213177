@@ -126,6 +126,7 @@ public class ArbolAVL_Admin {
         if(raiz == null) {
             raiz = new NodoAVL_Admin(dt, correo, contraseña);
             raiz.valorNodoEnString(x);
+            raiz.valorNodoEnInt(x);
             h.setLogical(true);
         }else if(dt.menorQue(raiz.valorNodo())) {
             NodoAVL_Admin izq;
@@ -356,7 +357,7 @@ public class ArbolAVL_Admin {
     static String graficar(NodoAVL_Admin r) {
         
         if(r != null) {
-            codigoGraph += "nodo" + idNodo + " [ label = "+ r.valorNodoEnString() +" ];" + System.getProperty("line.separator");
+            codigoGraph += "nodo" + idNodo + " [ label = \""+ r.getCorreo() +" - "+ r.valorNodoEnString() +"\" ];" + System.getProperty("line.separator");
             pila.push("nodo"+idNodo);
             idNodo++;
             

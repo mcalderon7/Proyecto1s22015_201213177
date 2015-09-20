@@ -16,7 +16,6 @@ public class Nodo {
     
     /*Administrador*/
     public Nodo(Object valor, String mail, String password) {
-        key = (Integer) valor;
         dato = valor;
         correo = mail;
         contraseña = password;
@@ -31,6 +30,10 @@ public class Nodo {
     
     public void valorNodoEnString(int x) {
         valorString = String.valueOf(x);
+    }
+    
+    public void valorNodoEnInt(int x) {
+        key = x;
     }
     
     public String valorNodoEnString() {
