@@ -360,7 +360,7 @@ public class ArbolAVL_Clave {
     static String graficar(NodoAVL_Clave r) {
         
         if(r != null) {
-            codigoGraph += "nodo" + idNodo + " [ label = "+ r.valorNodoEnString() +" ];" + System.getProperty("line.separator");
+            codigoGraph += "nodo" + idNodo + " [ label = \""+ r.nombre +" - "+ r.valorNodoEnString() +"\" ];" + System.getProperty("line.separator");
             pila.push("nodo"+idNodo);
             idNodo++;
             
@@ -424,16 +424,17 @@ public class ArbolAVL_Clave {
             Runtime rt = Runtime.getRuntime();
             rt.exec(cmd);
             
-            System.out.println("Done making Graphviz [Estaciones Clave] image.");
-            
             File file_x = new File(fileOutputPath);
             while (!file_x.exists()) {
                 try { 
+                    System.out.println("ENTRANDO AL HILO");
                     Thread.sleep(100);
                 } catch (InterruptedException ie) { 
                     /* safe to ignore */
                 }
             }
+            
+            System.out.println("Done making Graphviz [EstacionClave] image.");
             
         } catch(IOException ex) {
         
