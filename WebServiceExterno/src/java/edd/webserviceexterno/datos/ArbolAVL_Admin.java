@@ -382,24 +382,20 @@ public class ArbolAVL_Admin {
     static void crearArchivoGraphviz(String contenido) throws IOException {
         
         idNodo = 0;
+        codigoGraph = "";
+        codigoGraph += "digraph G{" + System.getProperty("line.separator");
+        codigoGraph += "rankdir=TB;" + System.getProperty("line.separator");
+        codigoGraph += "node [shape = record, style=filled, fillcolor=seashell2];" + System.getProperty("line.separator");
+        enlaceGraph = "";
         
         /*Termino de escribir el contenido del archivo de graphviz*/
         contenido += "}";
         
         File file = new File("C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_admin.txt");
         FileWriter fw = new FileWriter(file.getAbsoluteFile(), false);
-        
-        if(file.exists() && !file.isDirectory()) {
-            file.delete();
-            System.out.println(file.getName() + " is deleted!");
-            fw.write(contenido);
-            fw.close();
-            System.out.println("Done writting Graphviz file.");
-        }else {
-            fw.write(contenido);
-            fw.close();
-            System.out.println("Done writting Graphviz file.");
-        }
+        fw.write(contenido);
+        fw.close();
+        System.out.println("Done writting Graphviz file.");
         
         try {
             String dotPath = "C:\\Archivos de programa\\Graphviz2.38\\bin\\dot.exe";
@@ -407,6 +403,12 @@ public class ArbolAVL_Admin {
             String fileOutputPath = "C:\\Documents and Settings\\Marvin Calderon\\Escritorio\\diagrama_admin.jpg";
             String tParam = "-Tjpg";
             String tOParam = "-o";
+            
+            File file_y = new File(fileOutputPath);
+            if(file_y.exists() && !file_y.isDirectory()) {
+                file_y.delete();
+                System.out.println(file_y.getName() + " is deleted!");
+            }
             
             String[] cmd = new String[5];
             cmd[0] = dotPath;
@@ -418,16 +420,17 @@ public class ArbolAVL_Admin {
             Runtime rt = Runtime.getRuntime();
             rt.exec(cmd);
             
-            System.out.println("Done making Graphviz [Admins] image.");
-            
             File file_x = new File(fileOutputPath);
             while (!file_x.exists()) {
                 try { 
+                    System.out.println("ENTRANDO AL HILO");
                     Thread.sleep(100);
                 } catch (InterruptedException ie) { 
                     /* safe to ignore */
                 }
             }
+            
+            System.out.println("Done making Graphviz [Admins] image.");
             
         } catch(IOException ex) {
         
