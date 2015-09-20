@@ -6,10 +6,13 @@
 
 package edd.webserviceexterno.datos;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -407,7 +410,56 @@ public class Datos {
     @Oneway
     public void byteArrayToFile(@WebParam(name = "array") byte[] array) {
         
-        
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream("C:/Documents and Settings/Marvin Calderon/Escritorio/carga.csv");
+            fos.write(array);
+            fos.close();
+            
+            System.out.println("Archivo generado con éxito en el servidor.");
+            
+            /*PARTE EN DONDE HAGO VERIFICACIONES E INGRESO O NO LA INFORMACION DEL ARCHIVO*/
+            
+            String csvFile = "C:/Documents and Settings/Marvin Calderon/Escritorio/carga.csv";
+            BufferedReader br = null;
+            String line = "";
+            String csvSplitBy = ";";
+            
+            br = new BufferedReader(new FileReader(csvFile));
+            while((line = br.readLine()) != null) {
+                String[] resultado = line.split(csvSplitBy);
+                System.out.println("Carga [idbus = "+ resultado[0] +"], [ruta = "+ resultado[1] +"], [clavechofer = "+ resultado[2] +"], [hora_inicio = "+ resultado[3] +"], [hora_final = "+ resultado[4] +"], [fecha = "+ resultado[5] +"]");
+                
+                /*Condicionales para crear o no*/
+                int valor = (resultado[1].hashCode() > 0) ? resultado[1].hashCode() : resultado[1].hashCode() * -1;
+                
+                if(ruta.existe(valor)) {
+                    
+                    int valor_x = (resultado[0].hashCode() > 0) ? resultado[0].hashCode() : resultado[0].hashCode() * -1;
+                    if(!bus.existe(valor_x)) {
+                        /*Si no existe creo el bus*/
+                        bus.insertar(valor_x, resultado[0]);
+                        System.out.println("Se creo un bus con el id: " + valor_x);
+                    }
+                    
+                    if(!chofer.existe(chofer.raizArbol(), Integer.parseInt(resultado[2]), resultado[2])) {
+                        chofer.insertar(resultado[2], Integer.parseInt(resultado[2]), "Chofer", "Chofer", resultado[2], "chofer");
+                        System.out.println("Se creo un chofer con el id: " + resultado[2]);
+                    }
+                    
+                }
+                
+            }
+            
+            System.out.println("***************************************");
+            System.out.println("FINALIZA LA INSERCIÓN DE DATOS");
+            System.out.println("***************************************");
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 }
