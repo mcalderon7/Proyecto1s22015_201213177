@@ -473,16 +473,16 @@ public class Datos {
     public void eliminar(@WebParam(name = "tipo") String tipo, @WebParam(name = "clave") int clave) {
         
         if("admin".equals(tipo)) {
-            admin.eliminar(String.valueOf(clave));
+            admin.eliminar((Object)clave);
             System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
         }else if("chofer".equals(tipo)) {
-            chofer.eliminar(String.valueOf(clave));
+            chofer.eliminar((Object)clave);
             System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
         }else if("estacion_clave".equals(tipo)) {
-            estacion_clave.eliminar(String.valueOf(clave));
+            estacion_clave.eliminar((Object)clave);
             System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
         }else if("estacion_general".equals(tipo)) {
-            estacion_general.eliminar(String.valueOf(clave));
+            estacion_general.eliminar((Object)clave);
             System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
         }else if("bus".equals(tipo)) {
             bus.eliminar(clave);
