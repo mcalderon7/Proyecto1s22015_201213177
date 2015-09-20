@@ -92,9 +92,14 @@
             
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
+            java.lang.String result = port.crearAdministrador(correo_x, contraseña);
             
-            Boolean resultado = port.verificarAdministrador(correo_x, contraseña);
+            /*Con esta bandera verifico si ya fue creado ese administrador*/
+            Boolean resultado = port.verificacion("admin");
             Boolean auxiliar = true;
+            
+            System.out.println(resultado);
+            System.out.println(auxiliar);
             
             if(auxiliar.equals(resultado)) {
                 %>
@@ -104,7 +109,7 @@
                     </script>
                 <%
             }else {
-                java.lang.String result = port.crearAdministrador(correo_x, contraseña);
+                
                 System.out.println("Result = " + result);
                 /*Javascript*/
                 %>

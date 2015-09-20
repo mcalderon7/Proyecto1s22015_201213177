@@ -52,6 +52,10 @@
 
 <xs:element name="reporteRutaResponse" type="tns:reporteRutaResponse" />
 
+<xs:element name="verificacion" type="tns:verificacion" />
+
+<xs:element name="verificacionResponse" type="tns:verificacionResponse" />
+
 <xs:element name="verificarAdministrador" type="tns:verificarAdministrador" />
 
 <xs:element name="verificarAdministradorResponse" type="tns:verificarAdministradorResponse" />
@@ -67,6 +71,14 @@
 <xs:element name="verificarEstacionGeneral" type="tns:verificarEstacionGeneral" />
 
 <xs:element name="verificarEstacionGeneralResponse" type="tns:verificarEstacionGeneralResponse" />
+
+<xs:element name="verifyBus" type="tns:verifyBus" />
+
+<xs:element name="verifyBusResponse" type="tns:verifyBusResponse" />
+
+<xs:element name="verifyRuta" type="tns:verifyRuta" />
+
+<xs:element name="verifyRutaResponse" type="tns:verifyRutaResponse" />
 
 <xs:complexType name="CrearEstacionClave">
 <xs:sequence>
@@ -96,6 +108,18 @@
 
 <xs:complexType name="reporteRutaResponse">
 <xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="verificacion">
+<xs:sequence>
+<xs:element name="tipo" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificacionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="CrearAdministrador">
@@ -139,19 +163,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="verificarAdministrador">
-<xs:sequence>
-<xs:element name="correo" type="xs:string" minOccurs="0" />
-<xs:element name="password" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="verificarAdministradorResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean" />
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="CrearChofer">
 <xs:sequence>
 <xs:element name="nombre" type="xs:string" minOccurs="0" />
@@ -164,6 +175,19 @@
 <xs:complexType name="CrearChoferResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificarAdministrador">
+<xs:sequence>
+<xs:element name="correo" type="xs:string" minOccurs="0" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificarAdministradorResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
 </xs:sequence>
 </xs:complexType>
 
@@ -185,6 +209,18 @@
 
 <xs:complexType name="reporteEstacionGeneralResponse">
 <xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="verifyRuta">
+<xs:sequence>
+<xs:element name="identificador" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verifyRutaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
 </xs:complexType>
 
 <xs:complexType name="CrearBus">
@@ -241,6 +277,18 @@
 </xs:complexType>
 
 <xs:complexType name="verificarEstacionGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verifyBus">
+<xs:sequence>
+<xs:element name="identificador" type="xs:int" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verifyBusResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean" />
 </xs:sequence>
