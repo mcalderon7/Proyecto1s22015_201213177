@@ -62,7 +62,7 @@ public class Datos {
     public String CrearEstacionClave(@WebParam(name = "id_estacion_clave") int id_estacion_clave, @WebParam(name = "nombre") String nombre, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         int numNodos = 0;
-        String salida = "Podriamos decir que usted esta creando el administrador con id: "+ id_estacion_clave +" y con el nombre: " + nombre + " y con contraseña: " + password;
+        String salida = "Podriamos decir que usted esta creando la estacion clave con id: "+ id_estacion_clave +" y con el nombre: " + nombre + " y con contraseña: " + password;
         
         Numero elemento = new Numero(id_estacion_clave);
         estacion_clave.insertar(elemento, id_estacion_clave, nombre, String.valueOf(id_estacion_clave), password);
@@ -82,7 +82,7 @@ public class Datos {
     public String CrearEstacionGeneral(@WebParam(name = "id_estacion_general") int id_estacion_general, @WebParam(name = "nombre") String nombre, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         int numNodos = 0;
-        String salida = "Podriamos decir que usted esta creando el administrador con id: "+ id_estacion_general +" y con el nombre: " + nombre + " y con contraseña: " + password;
+        String salida = "Podriamos decir que usted esta creando la estacion general con id: "+ id_estacion_general +" y con el nombre: " + nombre + " y con contraseña: " + password;
         
         Numero elemento = new Numero(id_estacion_general);
         estacion_general.insertar(elemento, id_estacion_general, nombre, String.valueOf(id_estacion_general), password);
@@ -103,7 +103,7 @@ public class Datos {
     public String CrearChofer(@WebParam(name = "nombre") String nombre, @WebParam(name = "apellido") String apellido, @WebParam(name = "clave") int clave, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         int numNodos = 0;
-        String salida = "Podriamos decir que usted esta creando el administrador con id: "+ clave +" y con el nombre: " + nombre + " y con contraseña: " + password;
+        String salida = "Podriamos decir que usted esta creando el chofer con id: "+ clave +" y con el nombre: " + nombre + " y con contraseña: " + password;
         
         Numero elemento = new Numero(clave);
         chofer.insertar(elemento, clave, nombre, apellido, String.valueOf(clave), password);
@@ -121,7 +121,7 @@ public class Datos {
     public String CrearBus(@WebParam(name = "id_bus") String id_bus) {
         //TODO write your implementation code here:
         int valor = (id_bus.hashCode() > 0) ? id_bus.hashCode() : id_bus.hashCode() * -1;
-        String salida = "Podriamos decir que usted esta creando el administrador con id: " + id_bus;
+        String salida = "Podriamos decir que usted esta creando el bus con id: " + id_bus;
         bus.insertar(valor, id_bus);
         bus.ordenamientoBurbuja(bus);
         System.out.println("Cantidad de nodos de los buses: " + bus.getCantidadNodos());
@@ -138,7 +138,7 @@ public class Datos {
     public String CrearRuta(@WebParam(name = "nombre") String nombre, @WebParam(name = "estaciones") String estaciones) {
         //TODO write your implementation code here:
         int valor = (nombre.hashCode() > 0) ? nombre.hashCode() : nombre.hashCode() * -1;
-        String salida = "Podriamos decir que usted esta creando el administrador con id: " + nombre;
+        String salida = "Podriamos decir que usted esta creando la ruta con id: " + nombre;
         ruta.insertar(valor, nombre, estaciones);
         ruta.ordenamientoBurbuja(ruta);
         System.out.println("Cantidad de nodos de las rutas: " + ruta.getCantidadNodos());
@@ -163,49 +163,48 @@ public class Datos {
 
     /**
      * Web service operation
-     * @param nombre
+     * @param key
      * @param password
      * @return
      */
     @WebMethod(operationName = "verificarEstacionClave")
-    public boolean verificarEstacionClave(@WebParam(name = "nombre") String nombre, @WebParam(name = "password") String password) {
+    public boolean verificarEstacionClave(@WebParam(name = "key") int key, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         
         /*Llamamos al método que verifica si existe el nodo con esa información*/
-        boolean bandera = estacion_clave.existe(estacion_clave.raiz, nombre, password);
+        boolean bandera = estacion_clave.existe(estacion_clave.raiz, key, password);
         
         return bandera;
     }
 
     /**
      * Web service operation
-     * @param nombre
+     * @param key
      * @param password
      * @return
      */
     @WebMethod(operationName = "verificarEstacionGeneral")
-    public boolean verificarEstacionGeneral(@WebParam(name = "nombre") String nombre, @WebParam(name = "password") String password) {
+    public boolean verificarEstacionGeneral(@WebParam(name = "key") int key, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         
         /*Llamamos al método que verifica si existe el nodo con esa información*/
-        boolean bandera = estacion_general.existe(estacion_general.raiz, nombre, password);
+        boolean bandera = estacion_general.existe(estacion_general.raiz, key, password);
         
         return bandera;
     }
 
     /**
      * Web service operation
-     * @param nombre
-     * @param apellido
+     * @param key
      * @param password
      * @return
      */
     @WebMethod(operationName = "verificarChofer")
-    public boolean verificarChofer(@WebParam(name = "nombre") String nombre, @WebParam(name = "apellido") String apellido, @WebParam(name = "password") String password) {
+    public boolean verificarChofer(@WebParam(name = "key") int key, @WebParam(name = "password") String password) {
         //TODO write your implementation code here:
         
         /*Llamamos al método que verifica si existe el nodo con esa información*/
-        boolean bandera = chofer.existe(chofer.raiz, nombre, apellido, password);
+        boolean bandera = chofer.existe(chofer.raiz, key, password);
         
         return bandera;
     }

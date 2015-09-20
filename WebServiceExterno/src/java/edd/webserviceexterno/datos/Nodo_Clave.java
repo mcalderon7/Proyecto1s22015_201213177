@@ -6,6 +6,7 @@ package edd.webserviceexterno.datos;
  */
 public class Nodo_Clave {
     
+    protected int key;
     protected String nombre;
     protected String clave;
     protected String contraseña;
@@ -30,6 +31,10 @@ public class Nodo_Clave {
     
     public void valorNodoEnString(int x) {
         valorString = String.valueOf(x);
+    }
+    
+    public void valorNodoEnInt(int x) {
+        key = x;
     }
     
     public String valorNodoEnString() {

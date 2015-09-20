@@ -129,6 +129,7 @@ public class ArbolAVL_General {
         if(raiz == null) {
             raiz = new NodoAVL_General(dt, nombre, clave, contraseña);
             raiz.valorNodoEnString(x);
+            raiz.valorNodoEnInt(x);
             h.setLogical(true);
         }else if(dt.menorQue(raiz.valorNodo())) {
             NodoAVL_General izq;
@@ -204,24 +205,23 @@ public class ArbolAVL_General {
         }
     }
     
-    public boolean existe(NodoAVL_General nodo, String nombre, String password) {
+    public boolean existe(NodoAVL_General nodo, int key, String password) {
         
-        if(nodo != null) {
-            
-            if(nodo.nombre.equals(nombre) && nodo.contraseña.equals(password)) {
-                System.out.println("SE ENCONTRO EL NODO!");
-                return true;
-            }else {
-                if((NodoAVL_General)nodo.subArbolIzquierdo() != null) {
-                    existe((NodoAVL_General)nodo.subArbolIzquierdo(), nombre, password);
+        while (nodo != null) {
+            if (key == nodo.key) {
+                if(nodo.contraseña == null ? password == null : nodo.contraseña.equals(password)) {
+                    System.out.println("El nodo ha sido encontrado!");
+                    return true;
                 }
-                if((NodoAVL_General)nodo.subArbolDerecho() != null) {
-                    existe((NodoAVL_General)nodo.subArbolDerecho(), nombre, password);
-                }
+            } else if (key > nodo.key) {
+                nodo = (NodoAVL_General)nodo.subArbolDerecho();
+            } else {
+                nodo = (NodoAVL_General)nodo.subArbolIzquierdo();
             }
         }
-        System.out.println("NO SE ENCONTRO EL NODO!");
+        
         return false;
+        
     }
     
     static int mayor(int x, int y) {

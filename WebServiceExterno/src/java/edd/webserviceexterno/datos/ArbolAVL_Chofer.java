@@ -129,6 +129,7 @@ public class ArbolAVL_Chofer {
         if(raiz == null) {
             raiz = new NodoAVL_Chofer(dt, nombre, apellido, clave, contraseña);
             raiz.valorNodoEnString(x);
+            raiz.valorNodoEnInt(x);
             h.setLogical(true);
         }else if(dt.menorQue(raiz.valorNodo())) {
             NodoAVL_Chofer izq;
@@ -204,24 +205,23 @@ public class ArbolAVL_Chofer {
         }
     }
     
-    public boolean existe(NodoAVL_Chofer nodo, String nombre, String apellido, String password) {
+    public boolean existe(NodoAVL_Chofer nodo, int key, String password) {
         
-        if(nodo != null) {
-            
-            if(nodo.nombre.equals(nombre) && nodo.apellido.equals(apellido) && nodo.contraseña.equals(password)) {
-                System.out.println("SE ENCONTRO EL NODO!");
-                return true;
-            }else {
-                if((NodoAVL_Chofer)nodo.subArbolIzquierdo() != null) {
-                    existe((NodoAVL_Chofer)nodo.subArbolIzquierdo(), nombre, apellido, password);
+        while (nodo != null) {
+            if (key == nodo.key) {
+                if(nodo.contraseña == null ? password == null : nodo.contraseña.equals(password)) {
+                    System.out.println("El nodo ha sido encontrado!");
+                    return true;
                 }
-                if((NodoAVL_Chofer)nodo.subArbolDerecho() != null) {
-                    existe((NodoAVL_Chofer)nodo.subArbolDerecho(), nombre, apellido, password);
-                }
+            } else if (key > nodo.key) {
+                nodo = (NodoAVL_Chofer)nodo.subArbolDerecho();
+            } else {
+                nodo = (NodoAVL_Chofer)nodo.subArbolIzquierdo();
             }
         }
-        System.out.println("NO SE ENCONTRO EL NODO!");
+        
         return false;
+        
     }
     
     static int mayor(int x, int y) {
@@ -360,7 +360,7 @@ public class ArbolAVL_Chofer {
     static String graficar(NodoAVL_Chofer r) {
         
         if(r != null) {
-            codigoGraph += "nodo" + idNodo + " [ label = "+ r.valorNodoEnString() +" ];" + System.getProperty("line.separator");
+            codigoGraph += "nodo" + idNodo + " [ label = \""+ r.nombre +" - "+ r.valorNodoEnString() +" ];" + System.getProperty("line.separator");
             pila.push("nodo"+idNodo);
             idNodo++;
             

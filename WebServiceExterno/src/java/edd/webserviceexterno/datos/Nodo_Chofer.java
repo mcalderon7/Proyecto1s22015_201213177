@@ -6,6 +6,7 @@ package edd.webserviceexterno.datos;
  */
 public class Nodo_Chofer {
     
+    protected int key;
     protected String nombre;
     protected String apellido;
     protected String clave;
@@ -32,6 +33,10 @@ public class Nodo_Chofer {
     
     public void valorNodoEnString(int x) {
         valorString = String.valueOf(x);
+    }
+    
+    public void valorNodoEnInt(int x) {
+        key = x;
     }
     
     public String valorNodoEnString() {
