@@ -462,4 +462,36 @@ public class Datos {
         }
         
     }
+
+    /**
+     * Web service operation
+     * @param tipo
+     * @param clave
+     */
+    @WebMethod(operationName = "eliminar")
+    @Oneway
+    public void eliminar(@WebParam(name = "tipo") String tipo, @WebParam(name = "clave") int clave) {
+        
+        if("admin".equals(tipo)) {
+            admin.eliminar(clave);
+            System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
+        }else if("chofer".equals(tipo)) {
+            chofer.eliminar(clave);
+            System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
+        }else if("estacion_clave".equals(tipo)) {
+            estacion_clave.eliminar(clave);
+            System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
+        }else if("estacion_general".equals(tipo)) {
+            estacion_general.eliminar(clave);
+            System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
+        }else if("bus".equals(tipo)) {
+            bus.eliminar(clave);
+            System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
+        }else if("ruta".equals(tipo)) {
+            ruta.eliminar(clave);
+            System.out.println("Eliminacion realizada con éxito! ["+ tipo +"]");
+        }
+        
+    }
+
 }
