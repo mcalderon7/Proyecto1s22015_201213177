@@ -1,15 +1,15 @@
 <%-- 
-    Document   : crear_estacion_general
-    Created on : Sep 14, 2015, 11:17:37 PM
+    Document   : crear_ruta
+    Created on : Sep 14, 2015, 11:18:05 PM
     Author     : Marvin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+            <head>
 	<!-- General meta information -->
-	<title>Registro de Estaciones Generales</title>
+	<title>Registro de Rutas</title>
 	<meta charset="utf-8" />
 	<!-- // General meta information -->
 	
@@ -24,7 +24,7 @@
         <link rel="stylesheet" type="text/css" href="login_x/css/style.css" />
 	<!-- // Load stylesheets -->
 	
-    </head>
+</head>
 <body>
     
     <!-- Codrops top bar -->
@@ -42,13 +42,12 @@
     <nav class="codrops-demos">
         <a href="crear_administrador.jsp">Crear Administrador</a>
         <a href="crear_chofer.jsp">Crear Choferes</a>
-        <a class="current-demo" href="crear_estacion_general.jsp">Crear Estaciones Generales</a>
+        <a href="crear_estacion_general.jsp">Crear Estaciones Generales</a>
         <a href="crear_estacion_clave.jsp">Crear Estaciones Clave</a>
-        <a href="crear_ruta.jsp">Crear Ruta</a>
+        <a class="current-demo" href="crear_ruta.jsp">Crear Ruta</a>
         <a href="crear_bus.jsp">Crear Bus</a>
         <a href="reporteria.jsp">Reporteria</a>
         <a href="asignacionBus.jsp">Asignacion de Buses</a>
-        <a href="eliminar_administrador.jsp">Eliminacion</a>
     </nav>
     <head>
 	<meta charset="UTF-8" />
@@ -67,70 +66,44 @@
         <section class="main">
             <form class="form-1">
                 <p class="field">
-                    <input type="text" name="identificador" placeholder="ID">
-                    <i class="icon-star icon-large"></i>
-                </p>
-                <p class="field">
-                    <input type="text" name="nombre" placeholder="Nombre de la estacion">
+                    <input type="text" name="nombre" placeholder="Nombre de la ruta">
                     <i class="icon-user icon-large"></i>
                 </p>
-                    <p class="field">
-                    <input type="password" name="password" placeholder="Contraseña">
-                    <i class="icon-lock icon-large"></i>
-                </p>
                 <p class="submit">
-                    <button type="submit" name="boton_general" value="continue"><i class="icon-arrow-right icon-large"></i></button>
+                    <button type="submit" name="boton_ruta_eliminar" value="continue"><i class="icon-arrow-right icon-large"></i></button>
                 </p>
             </form>
         </section>
     </div>
-    <%-- start web service invocation --%>
+</body>
+</html>
+<%-- start web service invocation --%>
     <%
     try {
 	
-        String flag = request.getParameter("boton_general");
+        String flag = request.getParameter("boton_ruta_eliminar");
         
         if("continue".equals(flag)) {
-            int idEstacionGeneral = Integer.parseInt(request.getParameter("identificador"));
-            String nombre = request.getParameter("nombre");
-            String password = request.getParameter("password");
             
+            String nombre_ruta = request.getParameter("nombre");
+            int valor = (nombre_ruta.hashCode() > 0) ? nombre_ruta.hashCode() : nombre_ruta.hashCode() * -1;
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
-            java.lang.String result = port.crearEstacionGeneral(idEstacionGeneral, nombre, password);
+            port.eliminar("ruta", valor);
             
-            /*Con esta bandera verifico si ya fue creado ese administrador*/
-            Boolean resultado = port.verificacion("estacion_general");
-            Boolean auxiliar = true;
-            
-            System.out.println(resultado);
-            System.out.println(auxiliar);
-            
-            if(auxiliar.equals(resultado)) {
-                %>
-                    <script src="funciones.js"></script>
-                    <script>
-                        mensajeCreacion();
-                    </script>
-                <%
-            }else {
-                
-                System.out.println("Result = " + result);
-                /*Javascript*/
-                %>
-                    <script src="funciones.js"></script>
-                    <script>
-                        generalCorrecto();
-                    </script>
-                <%
-            }
+            /*Javascript*/
+            %>
+                <script src="funciones.js"></script>
+                <script>
+                    eliminacion();
+                </script>
+            <%
             
         }
+        
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }
     %>
     <%-- end web service invocation --%>
-</body>
-</html>
 

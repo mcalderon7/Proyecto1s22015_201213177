@@ -38,6 +38,10 @@ function lleneCampos() {
     alert("Favor de llenar todos los campos!");
 }
 
+function eliminacion() {
+    alert("Eliminacion realizada correctamente!");
+}
+
 function redirectCorrect() {
     document.forms[0].action = "crear_administrador.jsp";
     document.forms[0].method = "post";

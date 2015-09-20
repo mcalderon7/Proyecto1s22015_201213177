@@ -47,6 +47,7 @@
         <a href="crear_bus.jsp">Crear Bus</a>
         <a href="reporteria.jsp">Reporteria</a>
         <a href="asignacionBus.jsp">Asignacion de Buses</a>
+        <a href="eliminar_administrador.jsp">Eliminacion</a>
     </nav>
     
     <head>

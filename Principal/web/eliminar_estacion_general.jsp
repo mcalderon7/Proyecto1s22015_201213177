@@ -48,7 +48,6 @@
         <a href="crear_bus.jsp">Crear Bus</a>
         <a href="reporteria.jsp">Reporteria</a>
         <a href="asignacionBus.jsp">Asignacion de Buses</a>
-        <a href="eliminar_administrador.jsp">Eliminacion</a>
     </nav>
     <head>
 	<meta charset="UTF-8" />
@@ -70,16 +69,8 @@
                     <input type="text" name="identificador" placeholder="ID">
                     <i class="icon-star icon-large"></i>
                 </p>
-                <p class="field">
-                    <input type="text" name="nombre" placeholder="Nombre de la estacion">
-                    <i class="icon-user icon-large"></i>
-                </p>
-                    <p class="field">
-                    <input type="password" name="password" placeholder="Contraseña">
-                    <i class="icon-lock icon-large"></i>
-                </p>
                 <p class="submit">
-                    <button type="submit" name="boton_general" value="continue"><i class="icon-arrow-right icon-large"></i></button>
+                    <button type="submit" name="boton_general_eliminar" value="continue"><i class="icon-arrow-right icon-large"></i></button>
                 </p>
             </form>
         </section>
@@ -88,44 +79,25 @@
     <%
     try {
 	
-        String flag = request.getParameter("boton_general");
+        String flag = request.getParameter("boton_general_eliminar");
         
         if("continue".equals(flag)) {
-            int idEstacionGeneral = Integer.parseInt(request.getParameter("identificador"));
-            String nombre = request.getParameter("nombre");
-            String password = request.getParameter("password");
             
+            String identificador = request.getParameter("identificador");
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
-            java.lang.String result = port.crearEstacionGeneral(idEstacionGeneral, nombre, password);
+            port.eliminar("estacion_general", Integer.parseInt(identificador));
             
-            /*Con esta bandera verifico si ya fue creado ese administrador*/
-            Boolean resultado = port.verificacion("estacion_general");
-            Boolean auxiliar = true;
-            
-            System.out.println(resultado);
-            System.out.println(auxiliar);
-            
-            if(auxiliar.equals(resultado)) {
-                %>
-                    <script src="funciones.js"></script>
-                    <script>
-                        mensajeCreacion();
-                    </script>
-                <%
-            }else {
-                
-                System.out.println("Result = " + result);
-                /*Javascript*/
-                %>
-                    <script src="funciones.js"></script>
-                    <script>
-                        generalCorrecto();
-                    </script>
-                <%
-            }
+            /*Javascript*/
+            %>
+                <script src="funciones.js"></script>
+                <script>
+                    eliminacion();
+                </script>
+            <%
             
         }
+        
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }

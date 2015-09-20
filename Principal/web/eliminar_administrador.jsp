@@ -1,6 +1,6 @@
 <%-- 
-    Document   : crear_bus
-    Created on : Sep 14, 2015, 11:17:49 PM
+    Document   : crear_administrador
+    Created on : Sep 14, 2015, 11:15:43 PM
     Author     : Marvin
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
 	<!-- General meta information -->
-	<title>Registro de Buses</title>
+	<title>Registro de Administradores</title>
 	<meta charset="utf-8" />
 	<!-- // General meta information -->
 	
@@ -24,7 +24,6 @@
         <link rel="stylesheet" type="text/css" href="login_x/css/style.css" />
 	<!-- // Load stylesheets -->
     </head>
-    
 <body>
     
     <!-- Codrops top bar -->
@@ -36,20 +35,16 @@
         </span>
     </div>
     <!--/ Codrops top bar -->
-    
     <input type="hidden" name="submitType">
     <br><br><header><h1><center><font size="8">Bienvenido, <strong>Administrador!</strong></font></center></h1></header><br><br>
     
     <nav class="codrops-demos">
-        <a href="crear_administrador.jsp">Crear Administrador</a>
-        <a href="crear_chofer.jsp">Crear Choferes</a>
-        <a href="crear_estacion_general.jsp">Crear Estaciones Generales</a>
-        <a href="crear_estacion_clave.jsp">Crear Estaciones Clave</a>
-        <a href="crear_ruta.jsp">Crear Ruta</a>
-        <a class="current-demo" href="crear_bus.jsp">Crear Bus</a>
-        <a href="reporteria.jsp">Reporteria</a>
-        <a href="asignacionBus.jsp">Asignacion de Buses</a>
-        <a href="eliminar_administrador.jsp">Eliminacion</a>
+        <a class="current-demo" href="eliminar_administrador.jsp">Eliminar Administrador</a>
+        <a href="eliminar.jsp">Eliminar Choferes</a>
+        <a href="eliminar_estacion_general.jsp">Crear Estaciones Generales</a>
+        <a href="eliminar_estacion_clave.jsp">Crear Estaciones Clave</a>
+        <a href="eliminar_ruta.jsp">Crear Ruta</a>
+        <a href="eliminar_bus.jsp">Crear Bus</a>
     </nav>
     
     <head>
@@ -69,11 +64,11 @@
         <section class="main">
             <form class="form-1">
                 <p class="field">
-                    <input type="text" name="id" placeholder="ID">
+                    <input type="text" name="login" placeholder="Correo">
                     <i class="icon-user icon-large"></i>
                 </p>
                 <p class="submit">
-                    <button type="submit" name="boton_bus" value="continue"><i class="icon-arrow-right icon-large"></i></button>
+                    <button type="submit" name="button_eliminar" value="continue"><i class="icon-arrow-right icon-large"></i></button>
                 </p>
             </form>
         </section>
@@ -84,45 +79,26 @@
     <%
     try {
 	
-        String flag = request.getParameter("boton_bus");
+        String flag = request.getParameter("button_eliminar");
         
         if("continue".equals(flag)) {
             
-            String identificador = request.getParameter("id");
-            int valor = (identificador.hashCode() > 0) ? identificador.hashCode() : identificador.hashCode() * -1;
-            
+            String correo_x = request.getParameter("login");
+            int valor = (correo_x.hashCode() > 0) ? correo_x.hashCode() : correo_x.hashCode() * -1;
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
+            port.eliminar("admin", valor);
             
-            /*Con esta bandera verifico si ya fue creada ese bus*/
-            Boolean resultado = port.verifyBus(valor);
-            Boolean auxiliar = true;
-            
-            System.out.println(resultado);
-            System.out.println(auxiliar);
-            
-            if(auxiliar.equals(resultado)) {
-                %>
-                    <script src="funciones.js"></script>
-                    <script>
-                        mensajeCreacion();
-                    </script>
-                <%
-            }else {
-                
-                java.lang.String result = port.crearBus(identificador);
-                
-                System.out.println("Result = " + result);
-                /*Javascript*/
-                %>
-                    <script src="funciones.js"></script>
-                    <script>
-                        busCorrecto();
-                    </script>
-                <%
-            }
+            /*Javascript*/
+            %>
+                <script src="funciones.js"></script>
+                <script>
+                    eliminacion();
+                </script>
+            <%
             
         }
+        
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }
