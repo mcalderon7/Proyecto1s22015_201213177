@@ -26,6 +26,8 @@
 
 <xs:element name="byteArrayToFile" type="tns:byteArrayToFile" />
 
+<xs:element name="eliminar" type="tns:eliminar" />
+
 <xs:element name="imageToByteArray" type="tns:imageToByteArray" />
 
 <xs:element name="imageToByteArrayResponse" type="tns:imageToByteArrayResponse" />
@@ -93,6 +95,13 @@
 <xs:complexType name="CrearEstacionClaveResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminar">
+<xs:sequence>
+<xs:element name="tipo" type="xs:string" minOccurs="0" />
+<xs:element name="clave" type="xs:int" />
 </xs:sequence>
 </xs:complexType>
 
@@ -164,21 +173,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="CrearChofer">
-<xs:sequence>
-<xs:element name="nombre" type="xs:string" minOccurs="0" />
-<xs:element name="apellido" type="xs:string" minOccurs="0" />
-<xs:element name="clave" type="xs:int" />
-<xs:element name="password" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="CrearChoferResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="verificarAdministrador">
 <xs:sequence>
 <xs:element name="correo" type="xs:string" minOccurs="0" />
@@ -201,6 +195,21 @@
 <xs:complexType name="imageToByteArrayResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:base64Binary" nillable="true" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearChofer">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="apellido" type="xs:string" minOccurs="0" />
+<xs:element name="clave" type="xs:int" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearChoferResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
 </xs:sequence>
 </xs:complexType>
 
