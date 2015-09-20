@@ -118,7 +118,9 @@ public class Lista_Ruta {
         while(aux != null) {
             codigoGraph += "nodo" + idNodo + " [ label = \"Id Ruta: "+ aux.ruta +"\" ];" + System.getProperty("line.separator");
             enlaceGraph += "nodo" + idNodo + " -> nodo" + (idNodo + 1) + System.getProperty("line.separator");
+            enlaceGraph += "nodo" + (idNodo + 1) + " -> nodo" + idNodo + System.getProperty("line.separator");
             aux = aux.siguiente;
+            idNodo++;
         }
         
         return codigoGraph + enlaceGraph;
