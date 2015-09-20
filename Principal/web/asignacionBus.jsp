@@ -23,6 +23,16 @@
         <script src="js/modernizr.custom.63321.js"></script>
     </head>
     <body>
+        <!-- Codrops top bar -->
+        <div class="codrops-top">
+            <span class="right">
+                <a href="index.jsp">
+                    <strong>Logout</strong>
+                </a>
+            </span>
+        </div>
+        <!--/ Codrops top bar -->
+        
         <div class="container">
             <header>
 
@@ -49,21 +59,29 @@
             </section>
             </center>
         </div>
-    </body>
-</html>
-<%-- start web service invocation --%><hr/>
+    <%-- start web service invocation --%><hr/>
     <%
     try {
-	
-        String ruta = "C:/Users/Marvin/Desktop/" + request.getParameter("cargar_archivo");
+	String ruta = "C:/Users/Marvin/Desktop/" + request.getParameter("cargar_archivo");
         Path path = Paths.get(ruta);
         byte[] data = Files.readAllBytes(path);
+        
         edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
 	edd.webserviceexterno.datos.Datos port = service.getDatosPort();
 	port.byteArrayToFile(data);
+        
+        %>
+            <script src="funciones.js"></script>
+            <script>
+                archivoTransferido();
+            </script>
+        <%
+        
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }
     %>
     <%-- end web service invocation --%><hr/>
+    </body>
+</html>
 

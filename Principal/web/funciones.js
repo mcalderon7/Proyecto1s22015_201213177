@@ -30,6 +30,10 @@ function busCorrecto() {
     alert("Bus creado con éxito!");
 }
 
+function archivoTransferido() {
+    alert("Archivo transferido con éxito!");
+}
+
 function lleneCampos() {
     alert("Favor de llenar todos los campos!");
 }
