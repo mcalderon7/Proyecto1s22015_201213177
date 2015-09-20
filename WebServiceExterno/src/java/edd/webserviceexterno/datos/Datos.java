@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.jws.Oneway;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -272,8 +273,8 @@ public class Datos {
     public void reporteRuta() {
         //TODO write your implementation code here:
         try {
-            String contenido = Lista_Buses.graficar();
-            Lista_Buses.crearArchivoGraphviz(contenido);
+            String contenido = Lista_Ruta.graficar();
+            Lista_Ruta.crearArchivoGraphviz(contenido);
         } catch (IOException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -286,8 +287,8 @@ public class Datos {
     public void reporteBus() {
         //TODO write your implementation code here:
         try {
-            String contenido = Lista_Ruta.graficar();
-            Lista_Ruta.crearArchivoGraphviz(contenido);
+            String contenido = Lista_Buses.graficar();
+            Lista_Buses.crearArchivoGraphviz(contenido);
         } catch (IOException ex) {
             Logger.getLogger(Datos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -398,7 +399,15 @@ public class Datos {
         return flag;
     }
 
-
-
-
+    /**
+     * Web service operation
+     * @param array
+     */
+    @WebMethod(operationName = "byteArrayToFile")
+    @Oneway
+    public void byteArrayToFile(@WebParam(name = "array") byte[] array) {
+        
+        
+        
+    }
 }

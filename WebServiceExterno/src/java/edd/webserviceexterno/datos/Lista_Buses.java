@@ -19,7 +19,7 @@ public class Lista_Buses {
     public Lista_Buses() {
         cabeza = null;
         codigoGraph += "digraph G{" + System.getProperty("line.separator");
-        codigoGraph += "rankdir=TB;" + System.getProperty("line.separator");
+        codigoGraph += "rankdir=LR;" + System.getProperty("line.separator");
         codigoGraph += "node [shape = record, style=filled, fillcolor=seashell2];" + System.getProperty("line.separator");
     }
     
@@ -133,7 +133,7 @@ public class Lista_Buses {
         idNodo = 0;
         codigoGraph = "";
         codigoGraph += "digraph G{" + System.getProperty("line.separator");
-        codigoGraph += "rankdir=TB;" + System.getProperty("line.separator");
+        codigoGraph += "rankdir=LR;" + System.getProperty("line.separator");
         codigoGraph += "node [shape = record, style=filled, fillcolor=seashell2];" + System.getProperty("line.separator");
         enlaceGraph = "";
         
@@ -169,16 +169,17 @@ public class Lista_Buses {
             Runtime rt = Runtime.getRuntime();
             rt.exec(cmd);
             
-            System.out.println("Done making Graphviz [lista_buses] image.");
-            
             File file_x = new File(fileOutputPath);
             while (!file_x.exists()) {
                 try { 
+                    System.out.println("ENTRANDO AL HILO");
                     Thread.sleep(100);
                 } catch (InterruptedException ie) { 
                     /* safe to ignore */
                 }
             }
+            
+            System.out.println("Done making Graphviz [lista_buses] image.");
             
         } catch(IOException ex) {
         
