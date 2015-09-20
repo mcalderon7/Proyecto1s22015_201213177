@@ -94,24 +94,39 @@
         String flag = request.getParameter("boton_chofer");
         
         if("continue".equals(flag)) {
-            int clave = Integer.parseInt(request.getParameter("clave"));
             String nombre = request.getParameter("nombre");
             String apellido = request.getParameter("apellido");
-            String password = request.getParameter("password");
+            String clave = request.getParameter("clave");
+            String contraseña = request.getParameter("password");
             
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
-            java.lang.String result = port.crearChofer(nombre, apellido, clave, password);
-            System.out.println("Result = " + result);
-            /*Javascript*/
-            %>
-                <script src="funciones.js"></script>
-                <script>
-                    choferCorrecto();
-                </script>
-            <%
+            java.lang.String result = port.crearChofer(nombre, apellido, Integer.parseInt(clave), contraseña);
+            
+            /*Con esta bandera verifico si ya fue creado ese administrador*/
+            Boolean resultado = port.verificacion("chofer");
+            Boolean auxiliar = true;
+            
+            if(auxiliar.equals(resultado)) {
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        mensajeCreacion();
+                    </script>
+                <%
+            }else {
+                
+                System.out.println("Result = " + result);
+                /*Javascript*/
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        choferCorrecto();
+                    </script>
+                <%
+            }
+            
         }
-
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }

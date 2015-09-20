@@ -82,36 +82,53 @@
             </form>
         </section>
     </div>
-    <%-- start web service invocation --%><hr/>
+    <%-- start web service invocation --%>
     <%
     try {
-        
+	
         String flag = request.getParameter("boton_general");
         
         if("continue".equals(flag)) {
-            
             int idEstacionGeneral = Integer.parseInt(request.getParameter("identificador"));
-            java.lang.String nombre = request.getParameter("nombre");
-            java.lang.String password = request.getParameter("password");
+            String nombre = request.getParameter("nombre");
+            String password = request.getParameter("password");
             
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
             java.lang.String result = port.crearEstacionGeneral(idEstacionGeneral, nombre, password);
-            System.out.println("Result = " + result);
-            /*Javascript*/
-            %>
-                <script src="funciones.js"></script>
-                <script>
-                    generalCorrecto();
-                </script>
-            <%
+            
+            /*Con esta bandera verifico si ya fue creado ese administrador*/
+            Boolean resultado = port.verificacion("estacion_general");
+            Boolean auxiliar = true;
+            
+            System.out.println(resultado);
+            System.out.println(auxiliar);
+            
+            if(auxiliar.equals(resultado)) {
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        mensajeCreacion();
+                    </script>
+                <%
+            }else {
+                
+                System.out.println("Result = " + result);
+                /*Javascript*/
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        generalCorrecto();
+                    </script>
+                <%
+            }
+            
         }
-        
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }
     %>
-    <%-- end web service invocation --%><hr/>
+    <%-- end web service invocation --%>
 </body>
 </html>
 

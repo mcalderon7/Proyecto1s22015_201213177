@@ -143,7 +143,7 @@
                 Graphics2D g2 = bufferedImage.createGraphics();
                 g2.drawImage(image, null, null);
 
-                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_admin.jpg");
                 ImageIO.write(bufferedImage, "jpg", imageFile);
 
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
@@ -177,7 +177,7 @@
                 Graphics2D g2 = bufferedImage.createGraphics();
                 g2.drawImage(image, null, null);
 
-                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_chofer.jpg");
                 ImageIO.write(bufferedImage, "jpg", imageFile);
 
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
@@ -207,7 +207,7 @@
                 Graphics2D g2 = bufferedImage.createGraphics();
                 g2.drawImage(image, null, null);
 
-                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_estacion_clave.jpg");
                 ImageIO.write(bufferedImage, "jpg", imageFile);
 
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
@@ -237,7 +237,7 @@
                 Graphics2D g2 = bufferedImage.createGraphics();
                 g2.drawImage(image, null, null);
 
-                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_estacion_general.jpg");
                 ImageIO.write(bufferedImage, "jpg", imageFile);
 
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
@@ -267,7 +267,7 @@
                 Graphics2D g2 = bufferedImage.createGraphics();
                 g2.drawImage(image, null, null);
 
-                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_bus.jpg");
                 ImageIO.write(bufferedImage, "jpg", imageFile);
 
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
@@ -297,7 +297,7 @@
                 Graphics2D g2 = bufferedImage.createGraphics();
                 g2.drawImage(image, null, null);
 
-                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_"+ tipo +".jpg");
+                File imageFile = new File("C:/Users/Marvin/Documents/NetBeansProjects/Proyecto1s22015_201213177/Principal/web/diagramas/diagrama_ruta.jpg");
                 ImageIO.write(bufferedImage, "jpg", imageFile);
 
                 System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
