@@ -26,6 +26,10 @@ function rutaCorrecto() {
     alert("Ruta creada con éxito!");
 }
 
+function busCorrecto() {
+    alert("Bus creado con éxito!");
+}
+
 function lleneCampos() {
     alert("Favor de llenar todos los campos!");
 }

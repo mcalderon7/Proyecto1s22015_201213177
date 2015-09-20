@@ -24,6 +24,10 @@
 
 <xs:element name="CrearRutaResponse" type="tns:CrearRutaResponse" />
 
+<xs:element name="byteArrayToFile" type="tns:byteArrayToFile" />
+
+<xs:element name="byteArrayToFileResponse" type="tns:byteArrayToFileResponse" />
+
 <xs:element name="imageToByteArray" type="tns:imageToByteArray" />
 
 <xs:element name="imageToByteArrayResponse" type="tns:imageToByteArrayResponse" />
@@ -162,21 +166,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="CrearChofer">
-<xs:sequence>
-<xs:element name="nombre" type="xs:string" minOccurs="0" />
-<xs:element name="apellido" type="xs:string" minOccurs="0" />
-<xs:element name="clave" type="xs:int" />
-<xs:element name="password" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="CrearChoferResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0" />
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="verificarAdministrador">
 <xs:sequence>
 <xs:element name="correo" type="xs:string" minOccurs="0" />
@@ -199,6 +188,21 @@
 <xs:complexType name="imageToByteArrayResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:base64Binary" nillable="true" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearChofer">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0" />
+<xs:element name="apellido" type="xs:string" minOccurs="0" />
+<xs:element name="clave" type="xs:int" />
+<xs:element name="password" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CrearChoferResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
 </xs:sequence>
 </xs:complexType>
 
@@ -307,5 +311,17 @@
 
 <xs:complexType name="reporteAdministradorResponse">
 <xs:sequence />
+</xs:complexType>
+
+<xs:complexType name="byteArrayToFile">
+<xs:sequence>
+<xs:element name="archivo" type="xs:string" minOccurs="0" />
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="byteArrayToFileResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" />
+</xs:sequence>
 </xs:complexType>
 </xs:schema>

@@ -47,6 +47,7 @@
         <a class="current-demo" href="crear_ruta.jsp">Crear Ruta</a>
         <a href="crear_bus.jsp">Crear Bus</a>
         <a href="reporteria.jsp">Reporteria</a>
+        <a href="asignacionBus.jsp">Asignacion de Buses</a>
     </nav>
     <head>
 	<meta charset="UTF-8" />
@@ -117,7 +118,7 @@
                 %>
                     <script src="funciones.js"></script>
                     <script>
-                        adminCorrecto();
+                        rutaCorrecto();
                     </script>
                 <%
             }
