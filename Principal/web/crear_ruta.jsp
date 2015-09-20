@@ -78,36 +78,54 @@
             </form>
         </section>
     </div>
-    <%-- start web service invocation --%><hr/>
+</body>
+</html>
+<%-- start web service invocation --%>
     <%
     try {
 	
         String flag = request.getParameter("boton_ruta");
         
         if("continue".equals(flag)) {
-            
-            java.lang.String nombre = request.getParameter("nombre");
-            java.lang.String estaciones = request.getParameter("estaciones");
+            String nombre = request.getParameter("nombre");
+            String estaciones = request.getParameter("estaciones");
+            int valor = (nombre.hashCode() > 0) ? nombre.hashCode() : nombre.hashCode() * -1;
             
             edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
             edd.webserviceexterno.datos.Datos port = service.getDatosPort();
-            java.lang.String result = port.crearRuta(nombre, estaciones);
-            System.out.println("Result = " + result);
-            /*Javascript*/
-            %>
-                <script src="funciones.js"></script>
-                <script>
-                    rutaCorrecto();
-                </script>
-            <%
+            
+            /*Con esta bandera verifico si ya fue creada esa ruta*/
+            Boolean resultado = port.verifyRuta(valor);
+            Boolean auxiliar = true;
+            
+            System.out.println(resultado);
+            System.out.println(auxiliar);
+            
+            if(auxiliar.equals(resultado)) {
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        mensajeCreacion();
+                    </script>
+                <%
+            }else {
+                
+                java.lang.String result = port.crearRuta(nombre, estaciones);
+                
+                System.out.println("Result = " + result);
+                /*Javascript*/
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        adminCorrecto();
+                    </script>
+                <%
+            }
             
         }
-        
     } catch (Exception ex) {
 	// TODO handle custom exceptions here
     }
     %>
-    <%-- end web service invocation --%><hr/>
-</body>
-</html>
+    <%-- end web service invocation --%>
 

@@ -71,13 +71,61 @@
                     <i class="icon-user icon-large"></i>
                 </p>
                 <p class="submit">
-                    <button type="submit" name="boton" value="continue"><i class="icon-arrow-right icon-large"></i></button>
+                    <button type="submit" name="boton_bus" value="continue"><i class="icon-arrow-right icon-large"></i></button>
                 </p>
             </form>
         </section>
     </div>
 </body>
 </html>
+<%-- start web service invocation --%>
+    <%
+    try {
+	
+        String flag = request.getParameter("boton_bus");
+        
+        if("continue".equals(flag)) {
+            
+            String identificador = request.getParameter("id");
+            int valor = (identificador.hashCode() > 0) ? identificador.hashCode() : identificador.hashCode() * -1;
+            
+            edd.webserviceexterno.datos.Datos_Service service = new edd.webserviceexterno.datos.Datos_Service();
+            edd.webserviceexterno.datos.Datos port = service.getDatosPort();
+            
+            /*Con esta bandera verifico si ya fue creada ese bus*/
+            Boolean resultado = port.verifyBus(valor);
+            Boolean auxiliar = true;
+            
+            System.out.println(resultado);
+            System.out.println(auxiliar);
+            
+            if(auxiliar.equals(resultado)) {
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        mensajeCreacion();
+                    </script>
+                <%
+            }else {
+                
+                java.lang.String result = port.crearBus(identificador);
+                
+                System.out.println("Result = " + result);
+                /*Javascript*/
+                %>
+                    <script src="funciones.js"></script>
+                    <script>
+                        adminCorrecto();
+                    </script>
+                <%
+            }
+            
+        }
+    } catch (Exception ex) {
+	// TODO handle custom exceptions here
+    }
+    %>
+    <%-- end web service invocation --%>
 <%-- start web service invocation --%>
     <%
     try {
